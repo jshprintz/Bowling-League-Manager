@@ -69,6 +69,12 @@ li {
   font-weight: bold;
 }
 
+th {
+  width: 150px;
+  border-bottom: 2px solid black;
+  font-size: 14pt;
+}
+
 .login {
   display: flex;
   justify-content: center;
@@ -79,3 +85,4 @@ li {
 .login img {
   height: 30px;
 }
+

@@ -18,7 +18,7 @@ passport.use(new GoogleStrategy({
 
       // cb(error, dataThatYouWantToPassToPassport)
       if(user) return cb(null, user);
-
+    
       // So the User doens't exist in the database, 
       // which means we have a new user, so we have to add them to the database!
       try {
@@ -46,7 +46,7 @@ passport.serializeUser(function(user, done) {
 // This is where the user document is assigned to req.user
 passport.deserializeUser(function(id, done) {
 	User.findById(id, function(err, userDocument){
-		if(err) return cb(err)
+		if(err) return done(err)
 		done(null, userDocument);  // <- this assins the userDocument to req.user = userDocument
 	})
 });

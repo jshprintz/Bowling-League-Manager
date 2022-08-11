@@ -10,7 +10,6 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 
-
 // create the Express app
 const app = express();
 
@@ -18,8 +17,6 @@ const app = express();
 require('./config/database');
 // configure Passport
 require('./config/passport');
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

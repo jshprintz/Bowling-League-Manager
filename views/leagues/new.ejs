@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/leagues" method="POST">
+  <label>Name:</label>
+  <input type="text" name="leagueName"><br>
+  <label>Start Date:</label>
+  <input type="date" name="startDate"><br>
+  <label>Day of Week</label>
+  <select name="dayOfWeek">
+    <option value="Mon">Monday</option>
+    <option value="Tues">Tuesday</option>
+    <option value="Wed">Wednesday</option>
+    <option value="Thurs">Thursday</option>
+    <option value="Fri">Friday</option>
+    <option value="Sat">Saturday</option>
+    <option value="Sun">Sunday</option>
+  </select><br>
+  <label>Time of Week:</label>
+  <input type="time" name="timeOfWeek"><br>
+  <label>Duration:</label>
+  <input type="number" name="duration"><br><br>
+  <input type="submit" value="Add League">
+</form>
+
+<%- include('../partials/footer') %>

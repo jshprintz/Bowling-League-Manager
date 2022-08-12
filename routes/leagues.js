@@ -4,7 +4,10 @@ const leagueController = require('../controllers/leagues');
 const isLoggedIn = require('../config/auth');
 
 // Leagues
-router.get('/', leagueController.index)
+//Index
+router.get('/', leagueController.index);
+//New League
+router.get('/new', isLoggedIn, leagueController.new);
 
 // Exporting
 module.exports = router;

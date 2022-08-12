@@ -9,7 +9,7 @@ const leagueSchema = new mongoose.Schema({
     dayOfWeek: String,
     timeOfWeek: String,
     duration: Number,
-    userId: ObjectId,
+    userId: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 });
 
 module.exports = mongoose.model("League", leagueSchema);

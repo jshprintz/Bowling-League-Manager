@@ -2,6 +2,7 @@ const League = require("../models/league");
 
 module.exports = {
     index,
+    new: newLeague,
 };
 
 function index(req, res) {
@@ -13,3 +14,7 @@ function index(req, res) {
         };
     });
 };
+
+function newLeague(req, res) {
+    res.render("leagues/new.ejs");
+}

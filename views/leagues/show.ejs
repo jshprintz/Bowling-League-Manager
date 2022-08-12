@@ -32,7 +32,7 @@
                 <td>
                 <form action="/leagues/<%= league.id %>/edit"
                     class="edit-form" method="GET">
-                    <button type="submit">EDIT</button>
+                    <button type="submit">EDIT LEAGUE</button>
                 </form>
                 </td>
                     <td></td>
@@ -48,6 +48,57 @@
     </tbody>
     </table>
 </section>
+
+<!-- Add a player -->
+
+<% if (user) { %>
+    <br><br>
+    <h2>Teams</h2>
+    <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
+      <label>Team Name:</label>
+      <input type="Text" name="teamName"></input><br>
+      <label>Contact Name:</label>
+      <input type="Text" name="teamName"></input><br>
+      <label>Contact Email:</label>
+      <input type="Text" name="teamName"></input><br>
+      <label>Captain Name:</label>
+      <input type="Text" name="teamName"></input><br>
+      <label>Captain Email:</label>
+      <input type="Text" name="teamName"></input><br><br>
+      <% console.log(league.teams, "TEAMS") %> 
+      <input type="submit" value="Add Team">
+    </form>
+<% } %>
+
+
+<!-- Display all of the teams -->
+
+<% if (league.teams.length) { %>
+    <thead>
+        <tr>
+        <th>Team Name</th>
+        <th>Wins</th>
+        <th>Contact</th>
+        <th>Contact Email</th>
+        <th>Captain</th>
+        <th>Captain Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% league.teams.forEach(function(t) { %>
+            <tr>
+                <td><%= t.teamName %></td>
+                <td><%= t.wins %></td>
+                <td><%= t.contactName %></td>
+                <td><%= t.contactEmail %></td>
+                <td><%= t.captainName %> </td>
+                <td><%= t.captainEmail %> </td>
+            </tr>
+        <% }); %> 
+    </tbody>
+    </table>
+    
+<% } %>
 
 
 <%- include('../partials/footer') %>

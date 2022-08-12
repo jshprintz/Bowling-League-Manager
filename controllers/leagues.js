@@ -28,7 +28,7 @@ async function show(req, res) {
     try {
         const leagueDocument = await League.findById(req.params.id).exec();
 
-        res.render('leagues/show', {
+        res.render('leagues/show.ejs', {
             league: leagueDocument,
         });
 

@@ -25,10 +25,12 @@
     </div>
     <div></div>
     <div></div>
+    <% if (user) { %>
     <form action="/leagues/<%= league.id %>?_method=DELETE"
         class="delete-form" method="POST">
         <button type="submit">DELETE LEAGUE</button>
     </form>
+    <% }; %> 
   </section>
 
             <%- include('../partials/footer') %>

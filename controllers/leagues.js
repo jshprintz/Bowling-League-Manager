@@ -5,6 +5,7 @@ module.exports = {
     new: newLeague,
     create,
     show,
+    delete: deleteLeague,
 };
 
 //Display Index
@@ -34,6 +35,13 @@ async function show(req, res) {
     } catch (err) {
         res.send(err);
     }
+}
+
+// Delete League
+function deleteLeague(req, res) {
+    League.findByIdAndDelete(req.params.id, function(err){
+        res.redirect('/leagues');
+    })
 }
 
 

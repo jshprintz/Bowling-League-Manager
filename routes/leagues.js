@@ -13,6 +13,8 @@ router.get('/new', isLoggedIn, leagueController.new);
 router.post('/', isLoggedIn, leagueController.create);
 //Show League
 router.get('/:id', leagueController.show);
+//Delete League
+router.delete('/:id', isLoggedIn, leagueController.delete);
 
 
 // Exporting

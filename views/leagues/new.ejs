@@ -2,9 +2,9 @@
 
 <form id="new-form" action="/leagues" method="POST">
   <label>Name:</label>
-  <input type="text" name="leagueName"><br>
+  <input type="text" name="leagueName" required><br>
   <label>Start Date:</label>
-  <input type="date" name="startDate"><br>
+  <input type="date" name="startDate" required><br>
   <label>Day of Week</label>
   <select name="dayOfWeek">
     <option value="Monday">Monday</option>
@@ -16,9 +16,9 @@
     <option value="Sunday">Sunday</option>
   </select><br>
   <label>Time of Week:</label>
-  <input type="time" name="timeOfWeek"><br>
+  <input type="time" name="timeOfWeek" required><br>
   <label>Duration:</label>
-  <input type="number" name="duration"> weeks<br><br>
+  <input type="number" name="duration" required> weeks<br><br>
   <input type="submit" value="Add League">
 </form>
 

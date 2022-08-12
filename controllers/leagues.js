@@ -29,14 +29,18 @@ function index(req, res) {
 function edit(req, res) {
     League.findById(req.params.id, function(err, leagueDoc){
         res.render("leagues/edit.ejs", {
-            league: leagueDoc
+            league: leagueDoc,
         });
     });
 }
 
 //Update League
 function update(req, res) {
-    console.log("Update league")
+    League.findByIdAndUpdate(req.params.id, req.body, function(err, leagueDoc){
+        res.render('leagues/show.ejs', {
+            league: leagueDoc,
+        })
+    })
 }
 
 //Show League

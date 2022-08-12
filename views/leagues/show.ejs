@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+
+<!-- Display the individual league's details page -->
+
+  <section id="show-page">
+    <div>Name: </div>
+    <div>
+      <%= league.leagueName %>
+    </div>
+    <div>Start Date: </div>
+    <div>
+      <%= league.startDate %>
+    </div>
+    <div>Day of Week: </div>
+    <div>
+      <%= league.dayOfWeek %>
+    </div>
+    <div>Time of Week: </div>
+    <div>
+      <%= league.timeOfWeek%>
+    </div>
+    <div>Duration:</div>
+    <div>
+      <%= league.duration%>
+    </div>
+
+  </section>
+
+            <%- include('../partials/footer') %>

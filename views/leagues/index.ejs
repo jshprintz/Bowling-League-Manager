@@ -4,18 +4,26 @@
 
 <table id="list">
     <thead>
-      <tr>
+        <tr>
         <th>Name</th>
         <th>Start Date</th>
         <th>Day of Week</th>
         <th>Time of Week</th>
         <th>Duration</th>
-        <!-- <th></th> -->
+        <% league.forEach(function(l) { %>
+            <tr>
+              <td><%= l.leagueName %></td>
+              <td><%= l.startDate %></td>
+              <td><%= l.dayOfWeek %></td>
+              <td><%= l.timeOfWeek %></td>
+              <td><%= l.duration %></td>
+              <td><a href="/leagues/<%= l._id %>">DETAILS</a></td>
+            </tr>
+        <% }); %> 
       </tr>
     </thead>
     <tbody>
-
-        </tr>
+      
       </tbody>
     </table>
 

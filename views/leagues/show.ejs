@@ -26,9 +26,13 @@
     <div></div>
     <div></div>
     <% if (user) { %>
+    <form action="/leagues/<%= league.id %>/edit"
+        class="edit-form" method="GET">
+        <button type="submit">EDIT</button>
+    </form>
     <form action="/leagues/<%= league.id %>?_method=DELETE"
         class="delete-form" method="POST">
-        <button type="submit">DELETE LEAGUE</button>
+        <button type="submit">DELETE</button>
     </form>
     <% }; %> 
   </section>

@@ -15,6 +15,10 @@ router.post('/', isLoggedIn, leagueController.create);
 router.get('/:id', leagueController.show);
 //Delete League
 router.delete('/:id', isLoggedIn, leagueController.delete);
+// Edit League
+router.get('/:id/edit', isLoggedIn, leagueController.edit);
+//Update League
+router.put('/:id', isLoggedIn, leagueController.update);
 
 
 // Exporting

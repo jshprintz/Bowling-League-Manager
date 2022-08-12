@@ -6,6 +6,8 @@ module.exports = {
     create,
     show,
     delete: deleteLeague,
+    update,
+    edit,
 };
 
 //Display Index
@@ -23,18 +25,27 @@ function index(req, res) {
     });
 };
 
-//Show League
-async function show(req, res) {
-    try {
-        const leagueDocument = await League.findById(req.params.id).exec();
-
-        res.render('leagues/show.ejs', {
-            league: leagueDocument,
+// Display edit page
+function edit(req, res) {
+    League.findById(req.params.id, function(err, leagueDoc){
+        res.render("leagues/edit.ejs", {
+            league: leagueDoc
         });
+    });
+}
 
-    } catch (err) {
-        res.send(err);
-    }
+//Update League
+function update(req, res) {
+    console.log("Update league")
+}
+
+//Show League
+function show(req, res) {
+    League.findById(req.params.id, function(err, leagueDoc){
+        res.render('leagues/show.ejs', {
+            league: leagueDoc,
+        });
+    });
 }
 
 // Delete League
@@ -43,7 +54,6 @@ function deleteLeague(req, res) {
         res.redirect('/leagues');
     })
 }
-
 
 
 // Create league

@@ -2,39 +2,52 @@
 
 <!-- Display the individual league's details page -->
 
-  <section id="show-page">
-    <div>Name: </div>
-    <div>
-      <%= league.leagueName %>
-    </div>
-    <div>Start Date: </div>
-    <div>
-      <%= league.startDate.toLocaleDateString() %>
-    </div>
-    <div>Day of Week: </div>
-    <div>
-      <%= league.dayOfWeek %>
-    </div>
-    <div>Time of Week: </div>
-    <div>
-      <%= league.timeOfWeek%>
-    </div>
-    <div>Duration:</div>
-    <div>
-      <%= league.duration%> weeks
-    </div>
-    <div></div>
-    <div></div>
-    <% if (user) { %>
-    <form action="/leagues/<%= league.id %>/edit"
-        class="edit-form" method="GET">
-        <button type="submit">EDIT</button>
-    </form>
-    <form action="/leagues/<%= league.id %>?_method=DELETE"
-        class="delete-form" method="POST">
-        <button type="submit">DELETE</button>
-    </form>
-    <% }; %> 
-  </section>
+<section id="show-page">
 
-            <%- include('../partials/footer') %>
+    <table id="show">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>Day of Week</th>
+        <th>Time of Week</th>
+        <th>Duration</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td><%= league.leagueName %></td>
+        <td><%= league.startDate.toLocaleDateString()  %></td>
+        <td><%= league.dayOfWeek %></td>
+        <td><%= league.timeOfWeek %></td>
+        <td><%= league.duration %> weeks</td>
+        </tr>
+            <% if (user) { %>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td></td>
+                <td>
+                <form action="/leagues/<%= league.id %>/edit"
+                    class="edit-form" method="GET">
+                    <button type="submit">EDIT</button>
+                </form>
+                </td>
+                    <td></td>
+                <td>
+                <form action="/leagues/<%= league.id %>?_method=DELETE"
+                    class="delete-form" method="POST">
+                    <button type="submit">DELETE</button>
+                </form>
+                </td>
+                    <td></td>
+                </tr>
+            <% }; %> 
+    </tbody>
+    </table>
+</section>
+
+
+<%- include('../partials/footer') %>

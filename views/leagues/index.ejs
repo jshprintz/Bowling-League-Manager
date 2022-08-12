@@ -10,6 +10,9 @@
         <th>Day of Week</th>
         <th>Time of Week</th>
         <th>Duration</th>
+        </tr>
+    </thead>
+    <tbody>
         <% league.forEach(function(l) { %>
             <tr>
                 <td><%= l.leagueName %></td>
@@ -20,11 +23,7 @@
                 <td><a href="/leagues/<%= l._id %>">DETAILS</a></td>
             </tr>
         <% }); %> 
-      </tr>
-    </thead>
-    <tbody>
-      
-      </tbody>
+    </tbody>
     </table>
 
 <%- include('../partials/footer') %>

@@ -3,9 +3,9 @@
 <form id="new-form" action="/leagues/<%= league.id %>?_method=PUT" 
   method="POST">
   <label>Name:</label>
-  <input type="text" name="leagueName" value="<%= league.leagueName %> "><br>
+  <input type="text" name="leagueName" value="<%= league.leagueName %> " required><br>
   <label>Start Date:</label>
-  <input type="date" name="startDate" value="<%= league.startDate %> "> <i>Current: <%= league.startDate.toLocaleDateString() %> </i><br>
+  <input type="date" name="startDate" value="<%= league.startDate %> " required> <i>Current: <%= league.startDate.toLocaleDateString() %> </i><br>
   <label>Day of Week</label>
   <select name="dayOfWeek">
     <option value="Monday">Monday</option>
@@ -17,10 +17,10 @@
     <option value="Sunday">Sunday</option>
   </select> <i>Current: <%= league.dayOfWeek %> </i><br>
   <label>Time of Week:</label>
-  <input type="time" name="timeOfWeek" value="<%= league.timeOfWeek %> ">
+  <input type="time" name="timeOfWeek" value="<%= league.timeOfWeek %> " required>
    <i>Current: <%= league.timeOfWeek %> </i><br>
   <label>Duration:</label>
-  <input type="number" name="duration" value="<%= league.duration %> "> weeks |  <i>Current: <%= league.duration %> weeks</i><br><br>
+  <input type="number" name="duration" value="<%= league.duration %> " required> weeks |  <i>Current: <%= league.duration %> weeks</i><br><br>
   <input type="submit" value="Update League">
 </form>
 

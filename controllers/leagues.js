@@ -37,8 +37,8 @@ function edit(req, res) {
 //Update League
 function update(req, res) {
     League.findByIdAndUpdate(req.params.id, req.body, function(err, leagueDoc){
-        res.render('leagues/show.ejs', {
-            league: leagueDoc,
+        leagueDoc.save(function(err){
+            res.redirect('/leagues');
         })
     })
 }

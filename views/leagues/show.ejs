@@ -47,7 +47,6 @@
             <% }; %> 
     </tbody>
     </table>
-</section>
 
 <!-- Add a player -->
 
@@ -56,15 +55,15 @@
     <h2>Teams</h2>
     <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
       <label>Team Name:</label>
-      <input type="Text" name="teamName"></input><br>
+      <input type="Text" name="teamName" required></input><br>
       <label>Contact Name:</label>
-      <input type="Text" name="teamName"></input><br>
+      <input type="Text" name="contactName" required></input><br>
       <label>Contact Email:</label>
-      <input type="Text" name="teamName"></input><br>
+      <input type="Text" name="contactEmail" required></input><br>
       <label>Captain Name:</label>
-      <input type="Text" name="teamName"></input><br>
+      <input type="Text" name="captainName" required></input><br>
       <label>Captain Email:</label>
-      <input type="Text" name="teamName"></input><br><br>
+      <input type="Text" name="captainEmail" required></input><br><br>
       <% console.log(league.teams, "TEAMS") %> 
       <input type="submit" value="Add Team">
     </form>
@@ -74,31 +73,31 @@
 <!-- Display all of the teams -->
 
 <% if (league.teams.length) { %>
+    <br><br>
+    <table>
     <thead>
         <tr>
         <th>Team Name</th>
-        <th>Wins</th>
         <th>Contact</th>
         <th>Contact Email</th>
         <th>Captain</th>
         <th>Captain Email</th>
         </tr>
-    </thead>
+    </thead><br><br>
     <tbody>
         <% league.teams.forEach(function(t) { %>
             <tr>
                 <td><%= t.teamName %></td>
-                <td><%= t.wins %></td>
                 <td><%= t.contactName %></td>
                 <td><%= t.contactEmail %></td>
-                <td><%= t.captainName %> </td>
-                <td><%= t.captainEmail %> </td>
+                <td><%= t.captainName %></td>
+                <td><%= t.captainEmail %></td>
             </tr>
         <% }); %> 
     </tbody>
     </table>
-    
 <% } %>
 
+</section>
 
 <%- include('../partials/footer') %>

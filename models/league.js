@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 // Team Schema
 const teamSchema = new mongoose.Schema({
     teamName: String,
-    wins: Number,
     contactName: String,
     contactEmail: String,
     captainName: String,

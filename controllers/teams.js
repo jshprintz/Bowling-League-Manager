@@ -2,6 +2,7 @@ const League = require("../models/league");
 
 module.exports = {
     create,
+    delete: deleteTeam,
 };
 
 // Create team
@@ -19,3 +20,17 @@ function create(req, res) {
         });
     });
 };
+
+//Delete team
+function deleteTeam(req, res) {
+    // Match team
+    League.findOne({'teams._id': req.params.id,}, 
+        function(err, leagueDoc){
+            // no logged in user
+            if(!leagueDoc) return res.redirect('/leagues');
+
+            leagueDoc.teams.remove(req.params.id);
+            leagueDoc.save();
+            res.redirect(`/leagues/${leagueDoc._id}`)
+        });
+}

@@ -92,6 +92,13 @@
                 <td><%= t.contactEmail %></td>
                 <td><%= t.captainName %></td>
                 <td><%= t.captainEmail %></td>
+                <td>
+                    <% if (user) { %>
+                    <form action="/teams/<%= t._id %>?_method=DELETE" method="POST">
+                      <button type="submit">X</button>
+                    </form>
+                    <% } %>
+                </td>
             </tr>
         <% }); %> 
     </tbody>

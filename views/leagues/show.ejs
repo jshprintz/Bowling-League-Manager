@@ -4,7 +4,7 @@
 
 <section id="show-page">
 
-    <table id="show">
+    <table>
     <thead>
         <tr>
         <th>Name</th>
@@ -35,11 +35,12 @@
                     <button type="submit">EDIT LEAGUE</button>
                 </form>
                 </td>
-                    <td></td>
+                    <td>
+                    </td>
                 <td>
                 <form action="/leagues/<%= league.id %>?_method=DELETE"
                     class="delete-form" method="POST">
-                    <button type="submit">DELETE</button>
+                    <button type="submit">DELETE LEAGUE</button>
                 </form>
                 </td>
                     <td></td>
@@ -92,6 +93,7 @@
                 <td><%= t.contactEmail %></td>
                 <td><%= t.captainName %></td>
                 <td><%= t.captainEmail %></td>
+                <td><a href="/teams/<%= t._id %>">DETAILS</a></td>
                 <td>
                     <% if (user) { %>
                     <form action="/teams/<%= t._id %>?_method=DELETE" method="POST">

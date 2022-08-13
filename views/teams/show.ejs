@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+
+<table>
+    <thead>
+        <tr>
+        <th>Team Name</th>
+        <th>Contact</th>
+        <th>Contact Email</th>
+        <th>Captain</th>
+        <th>Captain Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td><% console.log(team, "<-IN THE SHOW") %> </td>    
+        <td><%= team.teamName %></td>
+        <td><%= team.contactName %></td>
+        <td><%= team.contactEmail %></td>
+        <td><%= team.captainName %></td>
+        <td><%= team.captainEmail %></td>
+        </tr>
+            <% if (user) { %>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td></td>
+                <td>
+                </td>
+                    <td>
+                    </td>
+                <td>
+                <form action="/teams/<%= team.id %>?_method=DELETE"
+                    class="delete-form" method="POST">
+                    <button type="submit">DELETE TEAM</button>
+                </form>
+                </td>
+                    <td></td>
+                </tr>
+            <% }; %> 
+    </tbody>
+    </table>
+
+<%- include('../partials/footer') %>

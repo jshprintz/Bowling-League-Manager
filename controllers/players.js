@@ -4,8 +4,8 @@ const League = require('../models/league');
 module.exports = {
     new: newPlayer,
     create,
+    index,
 }
-
 
 // render new player page
 function newPlayer(req, res) {
@@ -18,12 +18,27 @@ function newPlayer(req, res) {
 
 // Create player
 function create(req, res) {
-    Player.create(req.body, function (err, player){
-        console.log(player, "Player")
-        console.log(req.body, "REQ")
-        res.redirect('/players/new')
+    Player.create(req.body, function (err, players){
+        console.log(req.body, "REQ");
+        console.log(players, "PLAYERS");
+        //req.body is the new player
+        // player is all of the players
+        res.redirect('/players');
     })
 }
+
+
+//Display Index
+function index(req, res) {
+    Player.find({}, function (err, players) {
+        if (err) {
+            res.send("You have an error trying to find the leagues. Please call your system administrator.")
+        };
+        res.render('players/index.ejs', {
+            players: players,
+        });
+    });
+};
 
 // // Add player to team
 // function addToTeam(req, res) {

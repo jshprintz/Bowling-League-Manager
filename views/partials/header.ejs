@@ -9,10 +9,13 @@
 </head>
 <body>
   <nav>
-    <a href="/leagues">ALL leagues</a>
+    <a href="/leagues">All Leagues</a>
+    <a href="/players">All Players</a>
     <% if (user) { %>
       <a href="/leagues/new">
       New League</a>
+      <a href="/players/new">
+      New Player</a>
       <a href="/logout">LOG OUT</a>
     <% } else { %>
       <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>

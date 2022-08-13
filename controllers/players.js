@@ -1,6 +1,5 @@
 const Player = require('../models/player');
 const League = require('../models/league');
-const player = require('../models/player');
 
 module.exports = {
     new: newPlayer,
@@ -22,8 +21,7 @@ function create(req, res) {
     Player.create(req.body, function (err, player){
         console.log(player, "Player")
         console.log(req.body, "REQ")
-
-        res.redirect('/teams/show')
+        res.redirect('/players/new')
     })
 }
 

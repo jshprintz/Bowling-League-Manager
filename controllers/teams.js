@@ -5,17 +5,44 @@ module.exports = {
     delete: deleteTeam,
     show,
     edit,
+    update,
+};
+
+// Update Team
+function update(req, res) {
+    League.findOneAndUpdate({"teams._id": req.params.id}, req.body, 
+    function(err, teamDoc){
+        // Cycle through all the teams in the league
+        for (let i=0; i<teamDoc.teams.length; i++) {
+            // Converts the ID path from an object to a string
+            teamPath = JSON.stringify(teamDoc.teams[i]._id);
+            // If the path matches the request by the client
+            if(teamPath === `"${req.params.id}"`) {
+                console.log(teamDoc.teams[i], "FIRST")
+                console.log(req.body, "SECOND")
+                teamDoc.teams[i].teamName = req.body.teamName;
+                teamDoc.teams[i].contactName = req.body.contactName;
+                teamDoc.teams[i].contactEmail = req.body.contactEmail;
+                teamDoc.teams[i].captainName = req.body.captainName;
+                teamDoc.teams[i].captainEmail = req.body.captainEmail;
+                teamDoc.save(function(err){
+                    res.render('teams/show.ejs', {
+                        team: teamDoc.teams[i],
+                    });
+                });
+            };
+        };
+    });
 };
 
 // Edit team
 function edit(req, res) {
-    League.findOne({'teams._id': req.params.id,}, 
+    League.findOne({'teams._id': req.params.id}, 
     function(err, teamDoc) {
     // Cycle through all the teams in the league
         for (let i=0; i<teamDoc.teams.length; i++) {
             // Converts the ID path from an object to a string
             teamPath = JSON.stringify(teamDoc.teams[i]._id);
-            console.log(teamPath, "TEAM PATH")
             // If the path matches the request by the client
             if(teamPath === `"${req.params.id}"`) {
                 res.render('teams/edit.ejs', {

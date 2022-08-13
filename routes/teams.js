@@ -12,5 +12,7 @@ router.post('/leagues/:id/teams', isLoggedIn, teamsController.create);
 router.delete('/teams/:id', isLoggedIn, teamsController.delete);
 // Edit team
 router.get('/teams/:id/edit', isLoggedIn, teamsController.edit);
+// Update team
+router.put('/teams/:id', isLoggedIn, teamsController.update);
 
 module.exports = router;

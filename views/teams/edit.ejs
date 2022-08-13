@@ -2,7 +2,7 @@
 
 <br><br>
 <h2>Teams</h2>
-<form id="add-team-form" method="POST" action="/teams/<%= team._id %>">
+<form id="add-team-form" method="POST" action="/teams/<%= team._id %>?_method=PUT">
   <label>Team Name:</label>
   <input type="Text" name="teamName" value="<%= team.teamName %> " required></input><br>
   <label>Contact Name:</label>

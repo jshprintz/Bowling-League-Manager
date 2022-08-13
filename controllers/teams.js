@@ -18,8 +18,6 @@ function update(req, res) {
             teamPath = JSON.stringify(teamDoc.teams[i]._id);
             // If the path matches the request by the client
             if(teamPath === `"${req.params.id}"`) {
-                console.log(teamDoc.teams[i], "FIRST")
-                console.log(req.body, "SECOND")
                 teamDoc.teams[i].teamName = req.body.teamName;
                 teamDoc.teams[i].contactName = req.body.contactName;
                 teamDoc.teams[i].contactEmail = req.body.contactEmail;

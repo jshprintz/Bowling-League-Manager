@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+<h2>Add a Player</h2>
+<% if (players.length > 0) { %>
+    <p>Please first ensure that the Player is not in the dropdown
+        <select>
+          <% players.forEach(function(p) { %>
+            <option><%= p.name %></option>
+          <% }) %>
+        </select>
+    </p>
+<% } %>
+<form id="add-player-form" action="/players" method="POST">
+  <label>Name:</label>
+  <input type="text" name="name"><br>
+  <label>Average:</label>
+  <input type="number" name="avg"><br><br>
+  <input type="submit" value="Add Player">
+</form>
+
+<%- include('../partials/footer') %>

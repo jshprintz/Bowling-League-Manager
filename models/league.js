@@ -7,6 +7,7 @@ const teamSchema = new mongoose.Schema({
     contactEmail: String,
     captainName: String,
     captainEmail: String,
+    players: [{type: mongoose.Schema.Types.ObjectId, ref: 'players'}],
 });
 
 // League Schema

@@ -12,6 +12,7 @@ const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const leagueRoutes = require('./routes/leagues');
 const teamsRoutes = require('./routes/teams');
+const playersRoutes = require('./routes/players');
 
 // create the Express app
 const app = express();
@@ -53,6 +54,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/leagues', leagueRoutes);
 app.use('/', teamsRoutes);
+app.use('/', playersRoutes);
 
 // invalid request, send 404 page
 app.use(function(req, res) {

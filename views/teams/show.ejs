@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<section class="show-page">
 <table>
     <thead>
         <tr>
@@ -11,35 +11,39 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <td><% console.log(team, "<-IN THE SHOW") %> </td>    
+        <tr>   
         <td><%= team.teamName %></td>
         <td><%= team.contactName %></td>
         <td><%= team.contactEmail %></td>
         <td><%= team.captainName %></td>
         <td><%= team.captainEmail %></td>
         </tr>
-            <% if (user) { %>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr>
-                    <td></td>
+        <% if (user) { %>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td></td>
+            <td>
+            <form action="/teams/<%= team.id %>?_method=PUT"
+                class="delete-form" method="POST">
+                <button type="submit">EDIT TEAM DETAILS</button>
+            </form>
+            </td>
                 <td>
                 </td>
-                    <td>
-                    </td>
-                <td>
-                <form action="/teams/<%= team.id %>?_method=DELETE"
-                    class="delete-form" method="POST">
-                    <button type="submit">DELETE TEAM</button>
-                </form>
-                </td>
-                    <td></td>
-                </tr>
-            <% }; %> 
+            <td>
+            <form action="/teams/<%= team.id %>?_method=DELETE"
+                class="delete-form" method="POST">
+                <button type="submit">DELETE TEAM</button>
+            </form>
+            </td>
+                <td></td>
+            </tr>
+        <% }; %> 
     </tbody>
     </table>
+</section>
 
 <%- include('../partials/footer') %>

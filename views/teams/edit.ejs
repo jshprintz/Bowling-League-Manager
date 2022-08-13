@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<br><br>
+<h2>Teams</h2>
+<form id="add-team-form" method="POST" action="/teams/<%= team._id %>">
+  <label>Team Name:</label>
+  <input type="Text" name="teamName" value="<%= team.teamName %> " required></input><br>
+  <label>Contact Name:</label>
+  <input type="Text" name="contactName" value="<%= team.contactName %> " required></input><br>
+  <label>Contact Email:</label>
+  <input type="Text" name="contactEmail" value="<%= team.contactEmail %> " required></input><br>
+  <label>Captain Name:</label>
+  <input type="Text" name="captainName" value="<%= team.captainName %> " required></input><br>
+  <label>Captain Email:</label>
+  <input type="Text" name="captainEmail" value="<%= team.captainEmail %> "required></input><br><br>
+  <input type="submit" value="Update Team">
+</form>
+
+<%- include('../partials/footer') %>

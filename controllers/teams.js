@@ -4,12 +4,32 @@ module.exports = {
     create,
     delete: deleteTeam,
     show,
+    edit,
 };
+
+// Edit team
+function edit(req, res) {
+    League.findOne({'teams._id': req.params.id,}, 
+    function(err, teamDoc) {
+    // Cycle through all the teams in the league
+        for (let i=0; i<teamDoc.teams.length; i++) {
+            // Converts the ID path from an object to a string
+            teamPath = JSON.stringify(teamDoc.teams[i]._id);
+            console.log(teamPath, "TEAM PATH")
+            // If the path matches the request by the client
+            if(teamPath === `"${req.params.id}"`) {
+                res.render('teams/edit.ejs', {
+                    team: teamDoc.teams[i],
+                });
+            };
+        };
+    });
+}
+
 
 // Show team
 function show(req, res) {
 let teamPath = '';
-
 League.findOne({'teams._id': req.params.id,}, 
     function(err, teamDoc) {
         // Cycle through all the teams in the league

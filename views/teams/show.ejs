@@ -26,9 +26,9 @@
             <tr>
                 <td></td>
             <td>
-            <form action="/teams/<%= team.id %>?_method=PUT"
-                class="delete-form" method="POST">
-                <button type="submit">EDIT TEAM DETAILS</button>
+            <form action="/teams/<%= team.id %>/edit"
+                class="edit-form" method="GET">
+                <button type="submit">EDIT TEAM</button>
             </form>
             </td>
                 <td>

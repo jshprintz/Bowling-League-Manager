@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
 <section class="show-page">
+    <h2>TEAMS</h2>
 <table>
     <thead>
         <tr>
@@ -19,7 +20,7 @@
         <td><%= team.captainName %></td>
         <td><%= team.captainEmail %></td>
         </tr>
-        <% if (user) { %>
+    <% if (user) { %>
             <tr></tr>
             <tr></tr>
             <tr></tr>
@@ -32,7 +33,12 @@
                 <button type="submit">EDIT TEAM</button>
             </form>
             </td>
-            <td></td>
+            <td>
+            <form action="/players/new"
+                class="add-form" method="GET">
+                <button type="submit">ADD A PLAYER</button>
+            </form>
+            </td>
             <td>
             <form action="/teams/<%= team.id %>?_method=DELETE"
                 class="delete-form" method="POST">
@@ -43,25 +49,6 @@
             </tr>
     </tbody>
     </table>
-    <br>
-    <br>
-    <h2>Add a Player</h2>
-    <% if (team.players.length > 0) { %>
-        <p>Please first ensure that the Player is not in the dropdown
-            <select>
-              <% team.players.forEach(function(p) { %>
-                <option><%= p.name %></option>
-              <% }) %>
-            </select>
-        </p>
-    <% } %>
-    <form id="add-player-form" action="/players" method="POST">
-      <label>Name:</label>
-      <input type="text" name="name"><br>
-      <label>Average:</label>
-      <input type="number" name="avg"><br><br>
-      <input type="submit" value="Add Player">
-    </form>
     <% }; %> 
 </section>
 

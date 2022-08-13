@@ -1,4 +1,6 @@
 <%- include('../partials/header') %>
+<% if (user) { %>
+
 <h2>Add a Player</h2>
 <% if (players.length > 0) { %>
     <p>Please first ensure that the Player is not in the dropdown
@@ -9,12 +11,20 @@
         </select>
     </p>
 <% } %>
+<% console.log(players) %> 
 <form id="add-player-form" action="/players" method="POST">
   <label>Name:</label>
   <input type="text" name="name"><br>
+  <label>Email:</label>
+  <input type="text" name="email"><br>
   <label>Average:</label>
-  <input type="number" name="avg"><br><br>
+  <input type="number" name="avg"><br>
+  <label>Team Contact:</label>
+  <input type="checkbox" name="contact"><br>
+  <label>Team Captain:</label>
+  <input type="checkbox" name="captain"><br><br>
   <input type="submit" value="Add Player">
 </form>
+<% } %> 
 
 <%- include('../partials/footer') %>

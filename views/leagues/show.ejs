@@ -3,7 +3,7 @@
 <!-- Display the individual league's details page -->
 
 <section class="show-page">
-
+    <h2>League Information</h2>
     <table>
     <thead>
         <tr>
@@ -53,7 +53,7 @@
 
 <% if (user) { %>
     <br><br>
-    <h2>Teams</h2>
+    <h2>ADD a Team</h2>
     <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
       <label>Team Name:</label>
       <input type="Text" name="teamName" required></input><br>
@@ -68,12 +68,11 @@
       <input type="submit" value="Add Team">
     </form>
 <% } %>
-
+<br><br>
 
 <!-- Display all of the teams -->
-
 <% if (league.teams.length) { %>
-    <br><br>
+    <h2>Teams</h2>
     <table>
     <thead>
         <tr>
@@ -83,7 +82,7 @@
         <th>Captain</th>
         <th>Captain Email</th>
         </tr>
-    </thead><br><br>
+    </thead>
     <tbody>
         <% league.teams.forEach(function(t) { %>
             <tr>

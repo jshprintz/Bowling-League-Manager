@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<section class="show-page">
 <h1>List o' Players</h1>
 
 <table id="player-list">
@@ -8,8 +8,6 @@
         <th>Name</th>
         <th>Email</th>
         <th>Average</th>
-        <th>Contact</th>
-        <th>Captain</th>
         </tr>
     </thead>
     <tbody>
@@ -18,11 +16,9 @@
                 <td><%= p.name %></td>
                 <td><%= p.email %></td>
                 <td><%= p.avg %></td>
-                <td><% if (p.contact === true) { %> Yes <% } else { %>No<% } %></td>
-                <td><% if (p.captain === true) { %> Yes <% } else { %>No<% } %></td>
             </tr>
         <% }); %> 
     </tbody>
     </table>
-
+</section>
 <%- include('../partials/footer') %>

@@ -1,5 +1,4 @@
 const Player = require('../models/player');
-const League = require('../models/league');
 
 module.exports = {
     new: newPlayer,
@@ -21,11 +20,12 @@ function create(req, res) {
     Player.create(req.body, function (err, players){
         console.log(req.body, "REQ");
         console.log(players, "PLAYERS");
+        console.log(err, "ERROR")
         //req.body is the new player
         // player is all of the players
         res.redirect('/players');
-    })
-}
+    });
+};
 
 
 //Display Index

@@ -7,7 +7,8 @@ const playerSchema = new Schema({
     avg: Number,
     contact: Boolean,
     captain: Boolean,
-    otherLeagues: Array,
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model('Player', playerSchema);

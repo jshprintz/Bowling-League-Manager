@@ -49,16 +49,15 @@ function index(req, res) {
 // Add player to team
 function addToTeam(req, res) {
     League.findOne({'teams._id': req.params.id,},
-    function(err, teamDoc) {
-        console.log(teamDoc, "CONTROLLERS - PLAYERS - TEAMDOC")
-        for (let i=0; i<teamDoc.teams.length; i++) {
+    function(err, leagueDoc) {
+        for (let i=0; i<leagueDoc.teams.length; i++) {
             // Converts the ID path from an object to a string
-            teamPath = JSON.stringify(teamDoc.teams[i]._id);
+            teamPath = JSON.stringify(leagueDoc.teams[i]._id);
             // If the path matches the request by the client
             if(teamPath === `"${req.params.id}"`) {
-                teamDoc.teams[i].players.push(req.body.playerId);
-                teamDoc.save(function(err){
-                    res.render(`teams/${teamDoc._id}`);
+                leagueDoc.teams[i].players.push(req.body.playerId);
+                leagueDoc.save(function(err){
+                    res.redirect(`/teams/${leagueDoc.teams[i]._id}`);
                 })
             }
         }

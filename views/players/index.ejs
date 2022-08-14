@@ -11,20 +11,22 @@
         </tr>
     </thead>
     <tbody>
-        <% players.forEach(function(p) { %>
+        <% console.log(players, "PLAYERS in VIEW") %> 
+        <% for(let i=0; i < players.length; i++) { %>
             <tr>
-                <td><%= p.name %></td>
-                <td><%= p.email %></td>
-                <td><%= p.avg %></td>
+                <td><%= players[i].name %></td>
+                <td><%= players[i].email %></td>
+                <td><%= players[i].avg %></td>
+                <% console.log(players[i], "PLAYERS in VIEW") %> 
                 <td>
                     <% if (user) { %>
-                    <form action="/players/<%= p._id %>?_method=DELETE" method="POST">
+                    <form action="/players/<%= players[i]._id %>?_method=DELETE" method="POST">
                       <button type="submit">X</button>
                     </form>
                     <% } %>
                 </td>
             </tr>
-        <% }); %> 
+        <% }; %> 
     </tbody>
     </table>
 </section>

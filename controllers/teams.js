@@ -59,7 +59,7 @@ let teamPath = '';
     Player.find({}, function(err, players){
         League.findOne({'teams._id': req.params.id,}, 
         function(err, teamDoc) {
-            console.log(teamDoc, "<------------------HERE")
+            console.log(teamDoc.teams[0].players, "<------------------HERE")
             // Cycle through all the teams in the league
             for (let i=0; i<teamDoc.teams.length; i++) {
                 // Converts the ID path from an object to a string

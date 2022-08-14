@@ -23,6 +23,20 @@ body > nav {
   text-align: center;
 }
 
+.user-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 25px;
+}
+#edit-league-btn {
+  margin: 0px 25px;
+}
+#delete-league-btn {
+  margin: 0px 25px;
+}
+
+
 nav > img {
   width: 34px;
   object-fit: contain;
@@ -37,6 +51,7 @@ body > main {
   align-items: center;
   background-color: #ffffff;
   overflow-y: scroll;
+  margin-bottom: 75px;
 }
 
 body > main h1:first-child {
@@ -50,10 +65,6 @@ nav > a {
   border-radius: 5px;
 }
 
-nav > a:hover {
-  color: white;
-  background-color: #424748;
-}
 
 nav > a.active {
   color: white;
@@ -80,9 +91,10 @@ th {
 }
 
 .add-a-team-form {
-  background-color: aquamarine;
+  border: 2px solid black;
   width: 100%;
-  padding: 10px;
+  padding: 40px;
+  width: 300px;
 }
 
 .add-a-team-form > #add-team-form {
@@ -101,12 +113,12 @@ th {
   grid-row-start: 2;
   padding-bottom: 2px;
 }
-#add-team-form > #add-captain-name {
+#add-team-form > #add-contact-email {
   grid-column-start: 2;
   grid-row-start: 3;
   padding-bottom: 2px;
 }
-#add-team-form > #add-contact-email {
+#add-team-form > #add-captain-name {
   grid-column-start: 2;
   grid-row-start: 4;
   padding-bottom: 2px;
@@ -116,120 +128,116 @@ th {
   grid-row-start: 5;
   padding-bottom: 2px;
 }
-  .button-82-shadow {
-    grid-column-start: 2;
-    grid-row-start: 6;
-  }
+#add-team-btn {
+  grid-column-start: 2;
+  grid-row-start: 6;
+  margin-top: 25px;
+  width: 200px;
+}
+.button-82-pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
 
-  .button-82-pushable {
-    position: relative;
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-    outline-offset: 4px;
-    transition: filter 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .button-82-shadow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: hsl(0deg 0% 0% / 0.25);
-    will-change: transform;
-    transform: translateY(2px);
-    transition:
-      transform
-      600ms
-      cubic-bezier(.3, .7, .4, 1);
-  }
-  
-  .button-82-edge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: linear-gradient(
-      to left,
-      rgb(1, 0, 82) 0%,
-      rgb(0, 65, 163) 8%,
-      rgb(0, 79, 163) 92%,
-      rgb(0, 47, 82) 100%
-    );
-  }
-  
-  .button-82-front {
-    display: block;
-    position: relative;
-    padding: 12px 27px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    color: white;
-    background: rgb(25, 100, 211);
-    will-change: transform;
-    transform: translateY(-4px);
-    transition:
-      transform
-      600ms
-      cubic-bezier(.3, .7, .4, 1);
-  }
-  
-  @media (min-width: 768px) {
-    .button-82-front {
-      font-size: 1.25rem;
-      padding: 12px 42px;
-    }
-  }
-  
-  .button-82-pushable:hover {
-    filter: brightness(110%);
-    -webkit-filter: brightness(110%);
-  }
-  
-  .button-82-pushable:hover .button-82-front {
-    transform: translateY(-6px);
-    transition:
-      transform
-      250ms
-      cubic-bezier(.3, .7, .4, 1.5);
-  }
-  
-  .button-82-pushable:active .button-82-front {
-    transform: translateY(-2px);
-    transition: transform 34ms;
-  }
-  
-  .button-82-pushable:hover .button-82-shadow {
-    transform: translateY(4px);
-    transition:
-      transform
-      250ms
-      cubic-bezier(.3, .7, .4, 1.5);
-  }
-  
-  .button-82-pushable:active .button-82-shadow {
-    transform: translateY(1px);
-    transition: transform 34ms;
-  }
-  
-  .button-82-pushable:focus:not(:focus-visible) {
-    outline: none;
-  }
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    rgb(255, 255, 255) 0%,
+    rgb(0, 65, 163) 8%,
+    rgb(0, 79, 163) 92%,
+    rgb(255, 255, 255) 100%
+  );
+}
 
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: rgb(25, 100, 211);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
 
-.add-a-team-form > h2 {
-  text-align: center;
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
 }
 
 #list {
   text-align: center;
+}
+
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
 }

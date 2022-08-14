@@ -23,30 +23,6 @@
         <td><%= league.timeOfWeek %></td>
         <td><%= league.duration %> weeks</td>
         </tr>
-            <% if (user) { %>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
-                <tr>
-                    <td></td>
-                <td>
-                <form action="/leagues/<%= league.id %>/edit"
-                    class="edit-form" method="GET">
-                    <button type="submit">EDIT LEAGUE</button>
-                </form>
-                </td>
-                    <td>
-                    </td>
-                <td>
-                <form action="/leagues/<%= league.id %>?_method=DELETE"
-                    class="delete-form" method="POST">
-                    <button type="submit">DELETE LEAGUE</button>
-                </form>
-                </td>
-                    <td></td>
-                </tr>
-            <% }; %> 
     </tbody>
     </table>
 

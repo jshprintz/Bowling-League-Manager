@@ -1,8 +1,40 @@
 <!-- Add a team -->
 <% if (user) { %>
+<nav class="user-nav">
+  <form action="/leagues/<%= league.id %>/edit"
+    class="edit-form" method="GET" id="edit-league-btn">
+    <button type="submit" class="button-82-pushable">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+        EDIT LEAGUE
+        </span>
+    </button>
+  </form>
+
+  <form action="/leagues/<%= league.id %>?_method=DELETE"
+    class="delete-form" method="POST" id="delete-league-btn">
+    <button type="submit" class="button-82-pushable">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text">
+        DELETE LEAGUE
+      </span>
+    </button>
+  </form>
+</nav>
+
+
     <div class="add-a-team-form">
-      <h2>Add a Team</h2>
+      <h2>New Team</h2>
       <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
+        <button id="add-team-btn" class="button-82-pushable" role="button" type="submit" value="Add Team">
+          <span class="button-82-shadow"></span>
+          <span class="button-82-edge"></span>
+          <span class="button-82-front text">
+            Add a Team
+          </span>
+        </button>
         <div id="add-team-name">
           <label>Team Name:</label>
           <input type="Text" name="teamName" required></input>
@@ -23,13 +55,7 @@
           <label>Captain Email:</label>
           <input type="Text" name="captainEmail" required></input>
         </div>
-          <button class="button-82-pushable" role="button" type="submit" value="Add Team">
-            <span class="button-82-shadow"></span>
-            <span class="button-82-edge"></span>
-            <span class="button-82-front text">
-              Add Team
-            </span>
-          </button>
+
       </form>
   </div>
   <% } %>

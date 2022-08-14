@@ -16,11 +16,11 @@ body {
 
 body > nav {
   grid-area: nav;
-  background-color: #8fd0e0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 20px 0 30px;
+  padding: 75px;
+  text-align: center;
 }
 
 nav > img {
@@ -30,6 +30,7 @@ nav > img {
 }
 
 body > main {
+  margin-top: 75px;
   grid-area: main;
   display: flex;
   flex-direction: column;

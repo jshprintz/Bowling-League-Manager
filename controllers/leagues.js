@@ -1,4 +1,6 @@
 const League = require("../models/league");
+const player = require("../models/player");
+const Player = require("../models/player");
 
 module.exports = {
     index,
@@ -45,9 +47,13 @@ function update(req, res) {
 //Show League
 function show(req, res) {
     League.findById(req.params.id, function(err, leagueDoc){
-        res.render('leagues/show.ejs', {
-            league: leagueDoc,
-        });
+        Player.find({_id: {$nin: leagueDoc.teams.players}}, function(err, players){
+            console.log(players, "PLAYERS")
+            res.render('leagues/show.ejs', {
+                league: leagueDoc,
+                players: players,
+            });
+        })
     });
 }
 

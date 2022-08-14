@@ -33,6 +33,14 @@
                 <button type="submit">EDIT TEAM</button>
             </form>
             </td>
+            <form id="add-per-to-team" action="/teams/<%= team._id %>/players" method="POST">
+                <select name="playerId">
+                <%- players.map(p=>
+                    `<option value="${p._id}">${p.name}</option>`
+                    ).join('') %>
+                </select>
+                <button type="submit">Add to Team</button>
+            </form>
             <td>
             <form action="/players/new"
                 class="add-form" method="GET">

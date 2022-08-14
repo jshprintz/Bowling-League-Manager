@@ -1,9 +1,18 @@
 const Player = require('../models/player');
+const League = require('../models/league');
 
 module.exports = {
     new: newPlayer,
     create,
     index,
+    addToTeam,
+    delete: deletePlayer,
+}
+
+function deletePlayer(req, res) {
+    Player.findByIdAndDelete(req.params.id, function(err){
+        res.redirect('/players');
+    })
 }
 
 // render new player page
@@ -40,13 +49,19 @@ function index(req, res) {
     });
 };
 
-// // Add player to team
-// function addToTeam(req, res) {
-//     League.findById(req.params.id, function(err, teamDoc){
-//         teamDoc.players.push(req.body.playerId);
-//         teamDoc.save(function(err){
-//             res.redirect(`/leagues/${teamDoc._id}`)
-//         })
-//     })
-// }
+// Add player to team
+function addToTeam(req, res) {
+    League.findById(req.params.id, function(err, teamDoc){
+        teamDoc.players.push(req.body.playerId);
+        console.log(teamDoc, "TEAM DOC")
+        console.log(req.body, "REQ")
+        teamDoc.save(function(err){
+            Player.find({}, function(err, players){
+                res.render(`teams/${teamDoc._id}`, {
+                    players: players,
+                })
+            })
+        })
+    })
+}
 

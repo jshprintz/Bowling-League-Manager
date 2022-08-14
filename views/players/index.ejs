@@ -16,6 +16,13 @@
                 <td><%= p.name %></td>
                 <td><%= p.email %></td>
                 <td><%= p.avg %></td>
+                <td>
+                    <% if (user) { %>
+                    <form action="/players/<%= p._id %>?_method=DELETE" method="POST">
+                      <button type="submit">X</button>
+                    </form>
+                    <% } %>
+                </td>
             </tr>
         <% }); %> 
     </tbody>

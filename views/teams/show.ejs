@@ -58,6 +58,43 @@
     </tbody>
     </table>
     <% }; %> 
+
+
+<!-- Display all of the Players on the team -->
+<% if (team.players.length) { %>
+    <h2>Players</h2>
+    <table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Average</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% team.players.forEach(function(p) { %>
+            <tr>
+                <td><%= p.name %></td>
+                <td><%= p.email %></td>
+                <td><%= p.avg %></td>
+                <td>
+                    <% if (user) { %>
+                    <form action="/players/<%= p._id %>?_method=DELETE" method="POST">
+                      <button type="submit">X</button>
+                    </form>
+                    <% } %>
+                </td>
+            </tr>
+        <% }); %> 
+    </tbody>
+    </table>
+<% } %>
+
+
+
+
+
+
 </section>
 
 <%- include('../partials/footer') %>

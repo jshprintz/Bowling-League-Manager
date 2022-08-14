@@ -15,11 +15,9 @@ module.exports = {
 //Display Index
 function index(req, res) {
     League.find({}, function (err, allLeagues) {
-
         if (err) {
             res.send("You have an error trying to find the leagues. Please call your system administrator.")
         };
-
         res.render('leagues/index.ejs', {
             league: allLeagues,
         });
@@ -48,7 +46,6 @@ function update(req, res) {
 function show(req, res) {
     League.findById(req.params.id, function(err, leagueDoc){
         Player.find({_id: {$nin: leagueDoc.teams.players}}, function(err, players){
-            console.log(players, "PLAYERS")
             res.render('leagues/show.ejs', {
                 league: leagueDoc,
                 players: players,
@@ -67,7 +64,6 @@ function deleteLeague(req, res) {
 
 // Create league
 function create(req, res) {
-    console.log(req.user, '<-THIS IS THE USER');
     League.create(req.body, function(err, leagueDoc){        
         if (err) {
             console.log(err, "<- err in the leage create controller")

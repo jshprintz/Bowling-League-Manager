@@ -27,9 +27,6 @@ function newPlayer(req, res) {
 // Create player
 function create(req, res) {
     Player.create(req.body, function (err, players){
-        console.log(req.body, "REQ");
-        console.log(players, "PLAYERS");
-        console.log(err, "ERROR")
         //req.body is the new player
         // player is all of the players
         res.redirect('/players');
@@ -51,17 +48,19 @@ function index(req, res) {
 
 // Add player to team
 function addToTeam(req, res) {
-    League.findById(req.params.id, function(err, teamDoc){
-        teamDoc.players.push(req.body.playerId);
-        console.log(teamDoc, "TEAM DOC")
-        console.log(req.body, "REQ")
-        teamDoc.save(function(err){
-            Player.find({}, function(err, players){
-                res.render(`teams/${teamDoc._id}`, {
-                    players: players,
+    League.findOne({'teams._id': req.params.id,},
+    function(err, teamDoc) {
+        console.log(teamDoc, "CONTROLLERS - PLAYERS - TEAMDOC")
+        for (let i=0; i<teamDoc.teams.length; i++) {
+            // Converts the ID path from an object to a string
+            teamPath = JSON.stringify(teamDoc.teams[i]._id);
+            // If the path matches the request by the client
+            if(teamPath === `"${req.params.id}"`) {
+                teamDoc.teams[i].players.push(req.body.playerId);
+                teamDoc.save(function(err){
+                    res.render(`teams/${teamDoc._id}`);
                 })
-            })
-        })
+            }
+        }
     })
 }
-

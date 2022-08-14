@@ -10,7 +10,7 @@ router.get('/players/new', isLoggedIn, playersController.new);
 // Create player
 router.post('/players', isLoggedIn, playersController.create);
 // Add player to team
-router.post('/teams/:id/players', playersController.addToTeam);
+router.post('/teams/:id/players', isLoggedIn, playersController.addToTeam);
 // Delete Player
 router.delete('/players/:id', isLoggedIn, playersController.delete);
 

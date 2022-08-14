@@ -56,24 +56,29 @@ function edit(req, res) {
 // Show team
 function show(req, res) {
 let teamPath = '';
-    Player.find({}, function(err, players){
         League.findOne({'teams._id': req.params.id,}, 
-        function(err, teamDoc) {
-            console.log(teamDoc.teams[0].players, "<------------------HERE")
+        async function(err, teamDoc) {
+            console.log(teamDoc.teams, "THIS IS THE teamdoc")
+
             // Cycle through all the teams in the league
             for (let i=0; i<teamDoc.teams.length; i++) {
                 // Converts the ID path from an object to a string
                 teamPath = JSON.stringify(teamDoc.teams[i]._id);
                 // If the path matches the request by the client
                 if(teamPath === `"${req.params.id}"`) {
-                    res.render('teams/show.ejs', {
+                    let players = [];
+                    for (let n=0; n<teamDoc.teams[i].players.length; n++) {
+                        let player = await Player.findOne({_id: teamDoc.teams[i].players[n]})
+                        players.push(player)
+                    }
+                    console.log(players, "THIS IS THE PLAYERS")
+                        res.render('teams/show.ejs', {
                         team: teamDoc.teams[i],
                         players,
                     });
                 }
             };
         });
-    })
 };
 
 // Create team

@@ -5,8 +5,6 @@ const playerSchema = new Schema({
     name: String,
     email: String,
     avg: Number,
-    contact: Boolean,
-    captain: Boolean,
 }, {
     timestamps: true
 })

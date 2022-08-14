@@ -1,5 +1,4 @@
 const League = require("../models/league");
-const player = require("../models/player");
 const Player = require("../models/player");
 
 module.exports = {

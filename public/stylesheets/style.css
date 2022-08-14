@@ -96,9 +96,10 @@ th {
 
 .add-a-team-form {
   border: 2px solid black;
-  width: 100%;
-  padding: 40px;
-  width: 300px;
+  padding: 10px;
+  width: 50%;
+  margin: auto;
+  text-align: left;
 }
 
 .add-a-team-form > #add-team-form {
@@ -235,6 +236,9 @@ th {
 }
 
 #list {
+  text-align: center;
+}
+h2 {
   text-align: center;
 }
 

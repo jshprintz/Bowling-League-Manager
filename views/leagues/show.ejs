@@ -1,5 +1,4 @@
 <%- include('../partials/header') %>
-<%- include('../partials/userLeagues') %>
 
 <!-- Display the individual league's details page -->
 
@@ -25,7 +24,9 @@
         </tr>
     </tbody>
     </table>
-
+    <br>
+    <%- include('../partials/userLeagues') %>
+<br><br>
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>
     <h2>Teams</h2>

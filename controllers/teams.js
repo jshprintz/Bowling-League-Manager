@@ -56,10 +56,9 @@ function edit(req, res) {
 // Show team
 function show(req, res) {
 let teamPath = '';
+        // Find the correct league that has the team selected
         League.findOne({'teams._id': req.params.id,}, 
         async function(err, teamDoc) {
-            console.log(teamDoc.teams, "THIS IS THE teamdoc")
-
             // Cycle through all the teams in the league
             for (let i=0; i<teamDoc.teams.length; i++) {
                 // Converts the ID path from an object to a string
@@ -67,7 +66,9 @@ let teamPath = '';
                 // If the path matches the request by the client
                 if(teamPath === `"${req.params.id}"`) {
                     let players = [];
+                    
                     for (let n=0; n<teamDoc.teams[i].players.length; n++) {
+                        
                         let player = await Player.findOne({_id: teamDoc.teams[i].players[n]})
                         players.push(player)
                     }

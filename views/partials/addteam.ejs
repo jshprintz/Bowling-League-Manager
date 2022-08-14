@@ -1,0 +1,31 @@
+<!-- Add a team -->
+<% if (user) { %>
+    <div class="add-a-team-form">
+      <h2>Add a Team</h2>
+      <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
+        <div id="add-team-name">
+          <label>Team Name:</label>
+          <input type="Text" name="teamName" required></input>
+        </div>
+        <div id="add-contact-name">
+          <label>Contact Name:</label>
+           <input type="Text" name="contactName" required></input>
+        </div>
+        <div id="add-contact-email">
+           <label>Contact Email:</label>
+           <input type="Text" name="contactEmail" required></input>
+        </div>
+        <div id="add-captain-name">
+          <label>Captain Name:</label>
+          <input type="Text" name="captainName" required></input>
+        </div>
+        <div id="add-captain-email">
+          <label>Captain Email:</label>
+          <input type="Text" name="captainEmail" required></input>
+        </div>
+        <div id="add-team-button">
+          <input type="submit" value="Add Team">
+        </div>
+      </form>
+  </div>
+  <% } %>

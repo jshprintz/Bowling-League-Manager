@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<%- include('../partials/addteam') %>
 
 <!-- Display the individual league's details page -->
 
@@ -48,27 +49,6 @@
             <% }; %> 
     </tbody>
     </table>
-
-<!-- Add a team -->
-
-<% if (user) { %>
-    <br><br>
-    <h2>ADD a Team</h2>
-    <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
-      <label>Team Name:</label>
-      <input type="Text" name="teamName" required></input><br>
-      <label>Contact Name:</label>
-      <input type="Text" name="contactName" required></input><br>
-      <label>Contact Email:</label>
-      <input type="Text" name="contactEmail" required></input><br>
-      <label>Captain Name:</label>
-      <input type="Text" name="captainName" required></input><br>
-      <label>Captain Email:</label>
-      <input type="Text" name="captainEmail" required></input><br><br>
-      <input type="submit" value="Add Team">
-    </form>
-<% } %>
-<br><br>
 
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>

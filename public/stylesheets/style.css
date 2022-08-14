@@ -35,7 +35,6 @@ body > main {
   flex-direction: column;
   align-items: center;
   background-color: #ffffff;
-  padding: 20px;
   overflow-y: scroll;
 }
 
@@ -76,6 +75,50 @@ th {
   height: 30px;
 }
 .show-page {
+  text-align: center;
+}
+
+.add-a-team-form {
+  background-color: aquamarine;
+  width: 100%;
+  padding: 10px;
+}
+
+.add-a-team-form > #add-team-form {
+  display: grid;
+  grid-template-columns: 5;
+  grid-template-rows: 6;
+}
+
+#add-team-form > #add-team-name {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+#add-team-form > #add-contact-name {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+#add-team-form > #add-captain-name {
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+#add-team-form > #add-contact-email {
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+#add-team-form > #add-captain-email {
+  grid-column-start: 2;
+  grid-row-start: 5;
+}
+#add-team-form > #add-team-button {
+  grid-column-start: 2;
+  grid-row-start: 6;
+}
+
+
+
+
+.add-a-team-form > h2 {
   text-align: center;
 }
 

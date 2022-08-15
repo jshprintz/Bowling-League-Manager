@@ -5,6 +5,7 @@ const playerSchema = new Schema({
     name: String,
     email: String,
     avg: Number,
+    leagues: Array,
 }, {
     timestamps: true
 })

@@ -33,8 +33,9 @@ function show(req, res) {
 // Remove player from team
 
 function deleteFromTeam(req, res) {
-    console.log(req.body, "Req body")
-    res.send("You made it!")
+    //Find the player that needs to be removed
+    console.log(req, "REQ")
+    res.send("DELETE FROM TEAM");
 }
 
 
@@ -69,18 +70,27 @@ function index(req, res) {
 
 // Add player to team
 function addToTeam(req, res) {
-    League.findOne({'teams._id': req.params.id,},
-    function(err, leagueDoc) {
-        for (let i=0; i<leagueDoc.teams.length; i++) {
-            // Converts the ID path from an object to a string
-            teamPath = JSON.stringify(leagueDoc.teams[i]._id);
-            // If the path matches the request by the client
-            if(teamPath === `"${req.params.id}"`) {
-                leagueDoc.teams[i].players.push(req.body.playerId);
-                leagueDoc.save(function(err){
-                    res.redirect(`/teams/${leagueDoc.teams[i]._id}`);
-                })
+    // Finds the player
+    Player.findById(req.body.playerId, function(err, playerDoc){
+        // Finds the team
+        League.findOne({'teams._id': req.params.id,},
+        function(err, leagueDoc) {
+            for (let i=0; i<leagueDoc.teams.length; i++) {
+                // Converts the ID path from an object to a string
+                teamPath = JSON.stringify(leagueDoc.teams[i]._id);
+                // If the path matches the request by the client
+                if(teamPath === `"${req.params.id}"`) {
+                    // Adds player to team
+                    leagueDoc.teams[i].players.push(req.body.playerId);
+                    leagueDoc.save(function(err){
+                        // Adds league to player
+                        playerDoc.leagues.push(leagueDoc);
+                        playerDoc.save(function(err){
+                            res.redirect(`/teams/${leagueDoc.teams[i]._id}`);
+                        })
+                    })
+                }
             }
-        }
+        })
     })
 }

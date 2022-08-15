@@ -11,6 +11,11 @@ router.post('/players', isLoggedIn, playersController.create);
 router.post('/teams/:id/players', isLoggedIn, playersController.addToTeam);
 // Delete Player
 router.delete('/players/:id', isLoggedIn, playersController.delete);
+// Show Player
+router.get('/players/:id', isLoggedIn, playersController.show);
+// Update PLayer
+router.put('/players/:id', isLoggedIn, playersController.update);
+
 
 
 

@@ -42,6 +42,7 @@ function update(req, res) {
 
 //Show League
 function show(req, res) {
+    
     League.findById(req.params.id, function(err, leagueDoc){
         Player.find({_id: {$nin: leagueDoc.teams.players}}, function(err, players){
             res.render('leagues/show.ejs', {

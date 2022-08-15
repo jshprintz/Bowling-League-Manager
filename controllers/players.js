@@ -6,6 +6,27 @@ module.exports = {
     index,
     addToTeam,
     delete: deletePlayer,
+    show,
+    update,
+}
+
+
+//Update Player
+function update(req, res) {
+    Player.findByIdAndUpdate(req.params.id, req.body, function(err, playerDoc){
+        playerDoc.save(function(err){
+            res.redirect('/players');
+        })
+    })
+}
+
+// Show player details
+function show(req, res) {
+    Player.findById(req.params.id, function(err, playerDoc) {
+        res.render('players/show.ejs', {
+            player: playerDoc,
+        })
+    })
 }
 
 function deletePlayer(req, res) {

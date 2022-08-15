@@ -15,6 +15,8 @@ router.delete('/players/:id', isLoggedIn, playersController.delete);
 router.get('/players/:id', isLoggedIn, playersController.show);
 // Update PLayer
 router.put('/players/:id', isLoggedIn, playersController.update);
+// Delete from team
+router.delete('/teams/:id/players/:id', isLoggedIn, playersController.deleteFromTeam);
 
 
 

@@ -8,6 +8,7 @@ module.exports = {
     delete: deletePlayer,
     show,
     update,
+    deleteFromTeam,
 }
 
 
@@ -29,6 +30,15 @@ function show(req, res) {
     })
 }
 
+// Remove player from team
+
+function deleteFromTeam(req, res) {
+    console.log(req.body, "Req body")
+    res.send("You made it!")
+}
+
+
+// Delete the player
 function deletePlayer(req, res) {
     Player.findByIdAndDelete(req.params.id, function(err){
         res.redirect('/players');

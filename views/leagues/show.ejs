@@ -24,9 +24,7 @@
         </tr>
     </tbody>
     </table>
-    <br>
     <%- include('../partials/userLeagues') %>
-<br><br>
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>
     <h2>Teams</h2>
@@ -42,20 +40,20 @@
     </thead>
     <tbody>
         <% league.teams.forEach(function(t) { %>
-            <tr>
-                <td><%= t.teamName %></td>
+            <tr class="row">
+                <td><a href="/teams/<%= t._id %>"><%= t.teamName %></a></td>
                 <td><%= t.contactName %></td>
                 <td><%= t.contactEmail %></td>
                 <td><%= t.captainName %></td>
                 <td><%= t.captainEmail %></td>
-                <td><a href="/teams/<%= t._id %>">DETAILS</a></td>
+                
+                <% if (user) { %>
                 <td>
-                    <% if (user) { %>
-                    <form action="/teams/<%= t._id %>?_method=DELETE" method="POST">
-                      <button type="submit">X</button>
-                    </form>
-                    <% } %>
+                <form action="/teams/<%= t._id %>?_method=DELETE" method="POST">
+                    <button type="submit">X</button>
+                </form>
                 </td>
+                <% } %>
             </tr>
         <% }); %> 
     </tbody>

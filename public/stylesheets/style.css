@@ -264,6 +264,10 @@ table {
   outline: none;
 }
 
+.row:hover {
+  background-color: #b8baba;
+}
+
 #list {
   text-align: center;
 }

@@ -1,18 +1,20 @@
 <%- include('../partials/header') %>
 <%- include('../partials/userPlayers') %>
 
-
     <h1>List o' Players</h1>
+
+    <!-- Sort players -->
 
 <table id="player-list">
     <thead>
         <tr>
-        <th>Name</th>
+        <th>Name</a></th>
         <th>Email</th>
         <th>Average</th>
         </tr>
     </thead>
     <tbody>
+        <% players.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); reverse = true; %>
         <% for(let i=0; i < players.length; i++) { %>
             <tr class="row">
                 <td><%= players[i].name %></td>

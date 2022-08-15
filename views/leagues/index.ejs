@@ -14,6 +14,7 @@
         </tr>
     </thead>
     <tbody>
+        <% league.sort((a,b) => (a.startDate > b.startDate) ? 1 : ((b.startDate > a.startDate) ? -1 : 0)); %>
         <% league.forEach(function(l) { %>
             <tr class="row">
                 <td><a href="/leagues/<%= l._id %>"><%= l.leagueName %></a></td>

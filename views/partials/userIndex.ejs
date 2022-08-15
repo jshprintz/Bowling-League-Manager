@@ -1,6 +1,7 @@
-<%- include('../partials/header') %>
+
+<% if (user) { %>
+<form id="new-form" action="/leagues" method="POST" class="add-a-team-form">
 <h2>Add a League</h2>
-<form id="new-form" action="/leagues" method="POST">
   <label>Name:</label>
   <input type="text" name="leagueName" required><br>
   <label>Start Date:</label>
@@ -19,7 +20,16 @@
   <input type="time" name="timeOfWeek" required><br>
   <label>Duration:</label>
   <input type="number" name="duration" required> weeks<br><br>
-  <input type="submit" value="Add League">
+  
+  <button type="submit" class="button-82-pushable" id="add-league-btn">
+    <span class="button-82-shadow"></span>
+    <span class="button-82-edge"></span>
+    <span class="button-82-front text">
+      ADD LEAGUE
+    </span>
+  </button>
 </form>
 
-<%- include('../partials/footer') %>
+
+
+<% } %> 

@@ -3,7 +3,6 @@ const Player = require("../models/player");
 
 module.exports = {
     index,
-    new: newLeague,
     create,
     show,
     delete: deleteLeague,
@@ -70,9 +69,4 @@ function create(req, res) {
         }
         res.redirect(`/leagues/${leagueDoc._id}`);
     })
-}
-
-//Render new page
-function newLeague(req, res) {
-    res.render("leagues/new.ejs");
 }

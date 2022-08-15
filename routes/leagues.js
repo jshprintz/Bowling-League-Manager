@@ -7,8 +7,6 @@ const league = require('../models/league');
 // Leagues
 //Index
 router.get('/', leagueController.index);
-//New League
-router.get('/new', isLoggedIn, leagueController.new);
 //Create Leage
 router.post('/', isLoggedIn, leagueController.create);
 //Show League

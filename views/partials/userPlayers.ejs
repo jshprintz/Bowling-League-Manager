@@ -1,0 +1,21 @@
+<% if (user) { %>
+    <br>
+    <form id="add-player-form" action="/players" method="POST" class="add-a-team-form">
+      <h2>Add a Player</h2>
+      <label>Name:</label>
+      <input type="text" name="name"><br>
+      <label>Email:</label>
+      <input type="text" name="email"><br>
+      <label>Average:</label>
+      <input type="number" name="avg"><br>
+
+    <button type="submit" value="Add Player" class="button-82-pushable" id="add-player-btn">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+        ADD PLAYER
+        </span>
+    </button>
+      
+    </form>
+<% } %> 

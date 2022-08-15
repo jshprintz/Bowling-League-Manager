@@ -140,6 +140,19 @@ table {
   margin-top: 25px;
   width: 200px;
 }
+
+#add-player-form{
+  display: grid;
+  grid-template-columns: 5;
+  grid-template-rows: 6;
+}
+
+#add-player-btn {
+  margin-top: 20px;
+  grid-column-start: 1;
+}
+
+
 .button-82-pushable {
   position: relative;
   border: none;

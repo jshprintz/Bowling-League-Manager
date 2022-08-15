@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <section class="show-page">
-    <h2>TEAMS</h2>
+    <h2>TEAM DETAILS</h2>
 <table>
     <thead>
         <tr>
@@ -20,45 +20,10 @@
         <td><%= team.captainName %></td>
         <td><%= team.captainEmail %></td>
         </tr>
-    <% if (user) { %>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr>
-                <td></td>
-            <td>
-            <form action="/teams/<%= team.id %>/edit"
-                class="edit-form" method="GET">
-                <button type="submit">EDIT TEAM</button>
-            </form>
-            </td>
-            <form id="add-per-to-team" action="/teams/<%= team._id %>/players" method="POST">
-                <select name="playerId">
-                <%- players.map(p=>
-                    `<option value="${p._id}">${p.name}</option>`
-                    ).join('') %>
-                </select>
-                <button type="submit">Add to Team</button>
-            </form>
-            <td>
-            <form action="/players/new"
-                class="add-form" method="GET">
-                <button type="submit">ADD A PLAYER</button>
-            </form>
-            </td>
-            <td>
-            <form action="/teams/<%= team.id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                <button type="submit">DELETE TEAM</button>
-            </form>
-            </td>
-                <td></td>
-            </tr>
     </tbody>
-    </table>
-    <% }; %> 
+</table>
 
+<%- include('../partials/userTeam') %>
 
 <!-- Display all of the Players on the team -->
 <% if (team.players.length) { %>
@@ -73,8 +38,6 @@
     </thead>
     <tbody>
         <% for(let i=0; i<players.length; i++) { %>
-            <% console.log(players[i], "THIS IS THE PLAYERS ARRAY") %>
-            <%  %> 
             <tr> 
                 <td><%= players[i].name %></td>
                 <td><%= players[i].email %></td>

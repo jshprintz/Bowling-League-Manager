@@ -2,7 +2,6 @@ const Player = require('../models/player');
 const League = require('../models/league');
 
 module.exports = {
-    new: newPlayer,
     create,
     index,
     addToTeam,
@@ -12,15 +11,6 @@ module.exports = {
 function deletePlayer(req, res) {
     Player.findByIdAndDelete(req.params.id, function(err){
         res.redirect('/players');
-    })
-}
-
-// render new player page
-function newPlayer(req, res) {
-    Player.find({}, function (err, players) {
-        res.render(`players/new`, {
-            players: players,
-        })
     })
 }
 

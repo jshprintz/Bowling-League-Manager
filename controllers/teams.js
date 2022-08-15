@@ -56,6 +56,7 @@ function edit(req, res) {
 // Show team
 function show(req, res) {
 let teamPath = '';
+    Player.find({}, function(err, allPlayers){
         // Find the correct league that has the team selected
         League.findOne({'teams._id': req.params.id,}, 
         async function(err, teamDoc) {
@@ -68,18 +69,20 @@ let teamPath = '';
                     let players = [];
                     
                     for (let n=0; n<teamDoc.teams[i].players.length; n++) {
-                        
                         let player = await Player.findOne({_id: teamDoc.teams[i].players[n]})
                         players.push(player)
+                        console.log(players, "PLAYERS")
                     }
-                    console.log(players, "THIS IS THE PLAYERS")
+
                         res.render('teams/show.ejs', {
                         team: teamDoc.teams[i],
                         players,
+                        allPlayers
                     });
                 }
             };
         });
+    });
 };
 
 // Create team

@@ -26,10 +26,12 @@
     </form>
 </nav>
 
+
+<!-- Add to Team form -->
 <form id="add-per-to-team" action="/teams/<%= team._id %>/players" method="POST" class="add-a-team-form">
     <h4>Please select a player from the list below.</h4>
 <select name="playerId">
-<%- players.map(p=>
+<%- allPlayers.map(p=>
     `<option value="${p._id}">${p.name}</option>`
     ).join('') %>
 </select>
@@ -41,5 +43,6 @@
     </span>
 </button>
 </form>
+ 
 
 <% }; %> 

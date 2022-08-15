@@ -1,11 +1,10 @@
 <%- include('../partials/header') %>
 
 <section class="show-page">
-    <h2>TEAM DETAILS</h2>
+    <h2><%= team.teamName %> DETAILS</h2>
 <table>
     <thead>
         <tr>
-        <th>Team Name</th>
         <th>Contact</th>
         <th>Contact Email</th>
         <th>Captain</th>
@@ -14,7 +13,6 @@
     </thead>
     <tbody>
         <tr>   
-        <td><%= team.teamName %></td>
         <td><%= team.contactName %></td>
         <td><%= team.contactEmail %></td>
         <td><%= team.captainName %></td>
@@ -54,12 +52,6 @@
     </tbody>
     </table>
 <% } %>
-
-
-
-
-
-
 </section>
 
 <%- include('../partials/footer') %>

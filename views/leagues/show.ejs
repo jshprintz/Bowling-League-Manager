@@ -3,24 +3,26 @@
 <!-- Display the individual league's details page -->
 
 <section class="show-page">
-    <h2>League Information</h2>
+    <h2><%= league.leagueName %> Details</h2>
     <table>
     <thead>
         <tr>
-        <th>Name</th>
+        <th></th>
         <th>Start Date</th>
         <th>Day of Week</th>
         <th>Time of Week</th>
         <th>Duration</th>
+        <th></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-        <td><%= league.leagueName %></td>
+        <td></td>
         <td><%= league.startDate.toLocaleDateString()  %></td>
         <td><%= league.dayOfWeek %></td>
         <td><%= league.timeOfWeek %></td>
         <td><%= league.duration %> weeks</td>
+        <td></td>
         </tr>
     </tbody>
     </table>
@@ -46,14 +48,6 @@
                 <td><%= t.contactEmail %></td>
                 <td><%= t.captainName %></td>
                 <td><%= t.captainEmail %></td>
-                
-                <% if (user) { %>
-                <td>
-                <form action="/teams/<%= t._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button>
-                </form>
-                </td>
-                <% } %>
             </tr>
         <% }); %> 
     </tbody>

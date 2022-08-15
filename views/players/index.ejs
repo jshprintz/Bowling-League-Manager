@@ -1,7 +1,6 @@
 <%- include('../partials/header') %>
-<section class="show-page">
-
 <%- include('../partials/userPlayers') %>
+
 
     <h1>List o' Players</h1>
 
@@ -18,7 +17,7 @@
             <tr class="row">
                 <td><%= players[i].name %></td>
                 <td><%= players[i].email %></td>
-                <td><%= players[i].avg %></td>
+                <td class="center"><%= players[i].avg %></td>
                 <% if (user) { %>
                 <td>
                 <form action="/players/<%= players[i]._id %>?_method=DELETE" method="POST">
@@ -30,5 +29,5 @@
         <% }; %> 
     </tbody>
     </table>
-</section>
+<br><br>
 <%- include('../partials/footer') %>

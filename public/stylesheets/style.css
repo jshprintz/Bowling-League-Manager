@@ -32,6 +32,7 @@ body > nav {
   justify-content: space-around;
   padding-bottom: 25px;
 }
+
 #edit-league-btn {
   margin: 0px 25px;
 }
@@ -54,10 +55,6 @@ body > main {
   background-color: rgb(225, 225, 225, 0.9);
   overflow-y: scroll;
   border-radius: 10px;
-}
-
-body > main h1:first-child {
-  margin-bottom: 50px;
 }
 
 nav > a {
@@ -83,8 +80,8 @@ td{
 
 table {
   padding: 10px;
-  margin-bottom: 10%;
 }
+
 .login {
   display: flex;
   justify-content: center;
@@ -272,5 +269,9 @@ table {
   text-align: center;
 }
 h2 {
+  text-align: center;
+}
+
+.center {
   text-align: center;
 }

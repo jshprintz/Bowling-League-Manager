@@ -76,6 +76,7 @@ let teamPath = '';
 
                         res.render('teams/show.ejs', {
                         team: teamDoc.teams[i],
+                        league: teamDoc,
                         players,
                         allPlayers
                     });

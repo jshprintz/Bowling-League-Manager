@@ -2,6 +2,17 @@
 
 <section class="show-page">
     <h2><%= team.teamName %> Details</h2>
+    <form action="/leagues/<%= league.id %>"
+        class="edit-form" method="GET" id="back-to-league-btn">
+        <button type="submit" class="button-82-pushable">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+            Back To <span class="large"><%= league.leagueName %></span> League Details
+            </span>
+        </button>
+    </form>
+    
 <table>
     <thead>
         <tr>
@@ -35,17 +46,18 @@
     </thead>
     <tbody>
         <% for(let i=0; i<players.length; i++) { %>
-            <tr> 
+            <tr class="row"> 
                 <td><%= players[i].name %></td>
                 <td><%= players[i].email %></td>
                 <td><%= players[i].avg %></td>
+                
+                <% if (user) { %>
                 <td>
-                    <% if (user) { %>
-                    <form action="/players/<%= players[i]._id %>?_method=DELETE" method="POST">
-                      <button type="submit">X</button>
-                    </form>
-                    <% } %>
+                <form action="/players/<%= players[i]._id %>?_method=DELETE" method="POST">
+                    <button type="submit">X</button>
+                </form>
                 </td>
+                <% } %>
             </tr>
         <% }; %> 
     </tbody>

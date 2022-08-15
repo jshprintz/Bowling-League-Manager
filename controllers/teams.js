@@ -56,7 +56,19 @@ function edit(req, res) {
 // Show team
 function show(req, res) {
 let teamPath = '';
-    Player.find({}, function(err, allPlayers){
+let leaguePlayers = [];
+    
+    // Go through each team and add all the currrent players in the league
+    League.findOne({'teams._id': req.params.id,}, function(err, leagueDoc){
+        for (let i=0; i<leagueDoc.teams.length; i++){
+            console.log(leagueDoc.teams[i].players.length, "CURRENT TEAM");
+            for (let n=0; n<leagueDoc.teams[i].players.length; n++){
+                console.log(leagueDoc.teams[i].players[n], "LEAGUE PLAYERS");
+                leaguePlayers.push(leagueDoc.teams[i].players[n]);
+            }
+        }
+    })
+
         // Find the correct league that has the team selected
         League.findOne({'teams._id': req.params.id,}, 
         async function(err, teamDoc) {
@@ -71,8 +83,12 @@ let teamPath = '';
                     for (let n=0; n<teamDoc.teams[i].players.length; n++) {
                         let player = await Player.findOne({_id: teamDoc.teams[i].players[n]})
                         players.push(player)
-                        console.log(players, "PLAYERS")
+                        console.log(leaguePlayers, "PLAYERS")
                     }
+                    // Find all the players who are not already on the team.
+                    // This is a temp fix. I need to change this so that it accounts
+                    // for the same player on a different team
+                    Player.find({_id: {$nin: leaguePlayers}}, function(err, allPlayers){
 
                         res.render('teams/show.ejs', {
                         team: teamDoc.teams[i],
@@ -80,10 +96,10 @@ let teamPath = '';
                         players,
                         allPlayers
                     });
-                }
-            };
-        });
-    });
+                });
+            }
+        };
+    }); 
 };
 
 // Create team

@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <section class="show-page">
-    <h2><%= team.teamName %> DETAILS</h2>
+    <h2><%= team.teamName %> Details</h2>
 <table>
     <thead>
         <tr>
@@ -25,7 +25,7 @@
 
 <!-- Display all of the Players on the team -->
 <% if (team.players.length) { %>
-    <h2>Players</h2>
+    <h2><%= team.teamName %> Players</h2>
     <table>
     <thead>
         <tr>

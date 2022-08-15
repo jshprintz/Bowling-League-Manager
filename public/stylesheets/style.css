@@ -77,6 +77,10 @@ th {
   font-size: 14pt;
 }
 
+td{
+  height: 40px;
+}
+
 table {
   padding: 10px;
   margin-bottom: 10%;
@@ -161,10 +165,6 @@ table {
   grid-column-start: 1;
 }
 
-#add-league-btn {
-  
-}
-
 
 .button-82-pushable {
   position: relative;
@@ -177,6 +177,9 @@ table {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+.button-82-pushable img {
+  height: 18px;
 }
 
 .button-82-shadow {

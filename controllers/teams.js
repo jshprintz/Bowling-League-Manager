@@ -61,9 +61,7 @@ let leaguePlayers = [];
     // Go through each team and add all the currrent players in the league
     League.findOne({'teams._id': req.params.id,}, function(err, leagueDoc){
         for (let i=0; i<leagueDoc.teams.length; i++){
-            console.log(leagueDoc.teams[i].players.length, "CURRENT TEAM");
             for (let n=0; n<leagueDoc.teams[i].players.length; n++){
-                console.log(leagueDoc.teams[i].players[n], "LEAGUE PLAYERS");
                 leaguePlayers.push(leagueDoc.teams[i].players[n]);
             }
         }
@@ -83,7 +81,6 @@ let leaguePlayers = [];
                     for (let n=0; n<teamDoc.teams[i].players.length; n++) {
                         let player = await Player.findOne({_id: teamDoc.teams[i].players[n]})
                         players.push(player)
-                        console.log(leaguePlayers, "PLAYERS")
                     }
                     // Find all the players who are not already on the team.
                     // This is a temp fix. I need to change this so that it accounts

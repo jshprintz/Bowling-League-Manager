@@ -33,23 +33,32 @@ function show(req, res) {
 // Remove player from team
 
 function deleteFromTeam(req, res) {
-let teamPath = '';
+let playerPath = '';
     //Find the player that needs to be removed
     Player.findById(req.params.playerId, function(err, playerDoc){
         for (let i=0; i<playerDoc.leagues.length; i++){
             for (let n=0; n<playerDoc.leagues[i].teams.length; n++){
                 // Converts the ID path from an object to a string
-                teamPath = JSON.stringify(playerDoc.leagues[i].teams[n]._id);
+                playerPath = JSON.stringify(playerDoc.leagues[i].teams[n]._id);
                 // If the path matches the request by the client
-                if(teamPath === `"${req.params.id}"`){
-                    console.log(playerDoc.leagues[i].teams[n], "<--- Team to remove player from")
+                if(playerPath === `"${req.params.id}"`){
+                    // Remove the player from the league.teams.players array
+                    for (let x=0; x<playerDoc.leagues[i].teams[n].players.length; x++){
+                        playerPath = JSON.stringify(playerDoc.leagues[i].teams[n].players[x])
+                        if(playerPath === `"${req.params.playerId}"`){
+                            //NOTHING IS ACTUALLY REMOVING YET
+                            playerDoc.leagues[i].teams[n].players.splice(x, 1);
+                        
+                        // Remove the team from the players.teams array
+                            
+                            res.redirect(`/teams/${req.params.id}`);
+                        }
+                        
+                    }
                 }
             }
         }
-
-        res.send("DELETE FROM TEAM");
     })
-   
 }
 
 

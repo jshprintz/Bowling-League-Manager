@@ -34,38 +34,41 @@ function show(req, res) {
 
 function deleteFromTeam(req, res) {
 let playerPath = '';
-    //Find the player that needs to be removed
-    Player.findById(req.params.playerId, function(err, playerDoc){
-        // Find the team that he needs to be removed from. First find the league
-        for (let i=0; i<playerDoc.leagues.length; i++){
-            // Search through the league for the team
-            for (let n=0; n<playerDoc.leagues[i].teams.length; n++){
-                // Converts the ID path from an object to a string
-                playerPath = JSON.stringify(playerDoc.leagues[i].teams[n]._id);
+
+    League.findOne({'teams._id': req.params.id}, 
+    function(err, leagueDoc){
+        // no logged in user
+        if(!leagueDoc) return res.redirect('/leagues');
+
+        for (let i=0; i<leagueDoc.teams.length; i++) {
+            for (let n=0; n<leagueDoc.teams[i].players.length; n++) {
+                console.log(leagueDoc.teams[i].players[n], "<- PLAYERS")
+                playerPath = JSON.stringify(leagueDoc.teams[i].players[n]);
                 // If the path matches the request by the client
-                if(playerPath === `"${req.params.id}"`){
-
-                    // Remove the player from the league.teams.players array
-
-
-
-
-                        
-                        // Remove the team from the players.teams array
-
-                        for (let x=0; x<playerDoc.leagues[i].teams[n].players.length; x++){
-                            playerPath = JSON.stringify(playerDoc.leagues[i].teams[n].players[x])
-                            if(playerPath === `"${req.params.playerId}"`){
-                                //NOTHING IS ACTUALLY REMOVING YET
-                                playerDoc.leagues[i].teams[n].players.splice(x, 1);
-                            
-                            res.redirect(`/teams/${req.params.id}`);
-                        }
-                        
-                    }
-                }
+                if(playerPath === `"${req.params.playerId}"`){
+                    leagueDoc.teams[i].players.splice(n, 1)
+                    leagueDoc.save();
+                    res.redirect(`/teams/${leagueDoc.teams[i]._id}`)
             }
         }
+    };
+
+
+
+                
+        //         // Remove the team from the players.teams array
+
+        //         for (let x=0; x<playerDoc.leagues[i].teams[n].players.length; x++){
+        //             playerPath = JSON.stringify(playerDoc.leagues[i].teams[n].players[x])
+        //             if(playerPath === `"${req.params.playerId}"`){
+        //                 //NOTHING IS ACTUALLY REMOVING YET
+        //                 playerDoc.leagues[i].teams[n].players.splice(x, 1);
+                    
+        //             res.redirect(`/teams/${req.params.id}`);
+        //         }
+                
+        //     }
+        // }
     })
 }
 

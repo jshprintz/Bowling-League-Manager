@@ -82,9 +82,6 @@ let leaguePlayers = [];
                         let player = await Player.findOne({_id: teamDoc.teams[i].players[n]})
                         players.push(player)
                     }
-                    // Find all the players who are not already on the team.
-                    // This is a temp fix. I need to change this so that it accounts
-                    // for the same player on a different team
                     Player.find({_id: {$nin: leaguePlayers}}, function(err, allPlayers){
 
                         res.render('teams/show.ejs', {
@@ -102,11 +99,14 @@ let leaguePlayers = [];
 // Create team
 function create(req, res) {
     League.findById(req.params.id, function (err, leagueDoc) {
+
         //USE THIS FOR PROFILE STUFF
         req.body.user = req.user._id;
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
+
         leagueDoc.teams.push(req.body);
+
         leagueDoc.save(function(err){
             res.redirect(`/leagues/${req.params.id}`);
         });

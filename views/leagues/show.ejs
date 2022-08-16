@@ -26,7 +26,7 @@
         </tr>
     </tbody>
     </table>
-    
+
 <%- include('../partials/userLeagues') %>
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>
@@ -34,6 +34,7 @@
     <table>
     <thead>
         <tr>
+        <th>Created By</th>
         <th>Team Name</th>
         <th>Contact</th>
         <th>Contact Email</th>
@@ -44,6 +45,7 @@
     <tbody>
         <% league.teams.forEach(function(t) { %>
             <tr class="row">
+                <td><img alt="Avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer"><%= t.userName %></td>
                 <td><a href="/teams/<%= t._id %>"><%= t.teamName %></a></td>
                 <td><%= t.contactName %></td>
                 <td><%= t.contactEmail %></td>

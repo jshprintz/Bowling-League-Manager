@@ -8,6 +8,9 @@ const teamSchema = new mongoose.Schema({
     captainName: String,
     captainEmail: String,
     players: [{type: mongoose.Schema.Types.ObjectId, ref: 'Player'}],
+    user: [{type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
+    userName: String,
+    userAvatar: String,
 });
 
 // League Schema
@@ -18,7 +21,6 @@ const leagueSchema = new mongoose.Schema({
     timeOfWeek: String,
     duration: Number,
     teams: [teamSchema],
-    userId: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 });
 
 

@@ -6,6 +6,7 @@ const playerSchema = new Schema({
     email: String,
     avg: Number,
     leagues: Array,
+    profile: [{type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
 }, {
     timestamps: true
 })

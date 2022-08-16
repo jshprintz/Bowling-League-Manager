@@ -42,12 +42,23 @@ let playerPath = '';
 
             for (let i=0; i<leagueDoc.teams.length; i++) {
                 for (let n=0; n<leagueDoc.teams[i].players.length; n++) {
-                    console.log(leagueDoc.teams[i].players[n], "<- PLAYERS")
                     playerPath = JSON.stringify(leagueDoc.teams[i].players[n]);
                     // If the path matches the request by the client
                     if(playerPath === `"${req.params.playerId}"`){
-                        leagueDoc.teams[i].players.splice(n, 1)
+                        
+                        Player.findById(leagueDoc.teams[i].players[n], function(err,playerDoc){
+                            for(let x=0; x<playerDoc.leagues.length; x++){
+                                console.log(playerDoc.leagues[x], "<----Leagues")
+                                if(playerDoc.leagues._id === leagueDoc._id){
+                                    console.log("DELETE LEAGUE")
+                                    playerDoc.leagues.splice(x, 1);
+                                }
+                            }
+                        })
+                        
+                        leagueDoc.teams[i].players.splice(n, 1);
                         leagueDoc.save();
+
                         res.redirect(`/teams/${leagueDoc.teams[i]._id}`)
                 }
             }

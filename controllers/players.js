@@ -34,6 +34,7 @@ function show(req, res) {
 
 function deleteFromTeam(req, res) {
 let playerPath = '';
+let leaguePath = '';
 
     League.findOne({'teams._id': req.params.id}, 
     function(err, leagueDoc){
@@ -46,16 +47,19 @@ let playerPath = '';
                     // If the path matches the request by the client
                     if(playerPath === `"${req.params.playerId}"`){
                         
+                        //Remove the team from the player's teams array
                         Player.findById(leagueDoc.teams[i].players[n], function(err,playerDoc){
                             for(let x=0; x<playerDoc.leagues.length; x++){
-                                console.log(playerDoc.leagues[x], "<----Leagues")
-                                if(playerDoc.leagues._id === leagueDoc._id){
-                                    console.log("DELETE LEAGUE")
+                                playerPath = JSON.stringify(playerDoc.leagues[x]._id);
+                                leaguePath = JSON.stringify(leagueDoc._id);
+                                if(playerPath === leaguePath){
                                     playerDoc.leagues.splice(x, 1);
+                                    playerDoc.save();
                                 }
                             }
                         })
                         
+                        // Remove the player from the actual team
                         leagueDoc.teams[i].players.splice(n, 1);
                         leagueDoc.save();
 

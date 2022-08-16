@@ -33,9 +33,23 @@ function show(req, res) {
 // Remove player from team
 
 function deleteFromTeam(req, res) {
+let teamPath = '';
     //Find the player that needs to be removed
-    console.log(req, "REQ")
-    res.send("DELETE FROM TEAM");
+    Player.findById(req.params.playerId, function(err, playerDoc){
+        for (let i=0; i<playerDoc.leagues.length; i++){
+            for (let n=0; n<playerDoc.leagues[i].teams.length; n++){
+                // Converts the ID path from an object to a string
+                teamPath = JSON.stringify(playerDoc.leagues[i].teams[n]._id);
+                // If the path matches the request by the client
+                if(teamPath === `"${req.params.id}"`){
+                    console.log(playerDoc.leagues[i].teams[n], "<--- Team to remove player from")
+                }
+            }
+        }
+
+        res.send("DELETE FROM TEAM");
+    })
+   
 }
 
 
@@ -48,9 +62,7 @@ function deletePlayer(req, res) {
 
 // Create player
 function create(req, res) {
-    Player.create(req.body, function (err, players){
-        //req.body is the new player
-        // player is all of the players
+    Player.create(req.body, function (err){
         res.redirect('/players');
     });
 };

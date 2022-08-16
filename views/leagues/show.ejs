@@ -27,7 +27,12 @@
     </tbody>
     </table>
 
-<%- include('../partials/userLeagues') %>
+    <% if (league.teams.length === (league.duration+1)) { %>
+        <h3 class="add-a-team-form" id="maxed-out">TEAMS MAXED OUT</h3>
+    <% } else { %> 
+    <%- include('../partials/userLeagues') %>
+    <% } %> 
+
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>
     <h2><%= league.leagueName %> Teams</h2>

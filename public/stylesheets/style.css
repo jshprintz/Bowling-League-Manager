@@ -277,6 +277,11 @@ table {
 #list {
   text-align: center;
 }
+
+#maxed-out {
+  text-align: center;
+}
+
 h2 {
   text-align: center;
 }

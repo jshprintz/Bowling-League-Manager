@@ -47,7 +47,7 @@
     <tbody>
         <% for(let i=0; i<players.length; i++) { %>
             <tr class="row"> 
-                <td><%= players[i].name %></td>
+                <td><a href="/players/<%= players[i]._id %> "><%= players[i].name %></a></td>
                 <td><%= players[i].email %></td>
                 <td><%= players[i].avg %></td>
                 

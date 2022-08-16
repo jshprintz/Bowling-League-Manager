@@ -75,7 +75,7 @@ th {
 
 td{
   height: 40px;
-  padding: 0px 5px;
+  padding: 5px;
 }
 
 table {
@@ -164,6 +164,11 @@ table {
   margin-top: 20px;
   grid-column-start: 1;
 }
+
+#add-player-to-team-btn {
+  margin-left: 25%;
+}
+
 
 /* button stuff */
 
@@ -283,4 +288,10 @@ h2 {
 .large {
   font-size: 14pt;
   color: white;
+}
+
+#select-name {
+  width: 150px;
+  margin-bottom: 15px;
+  margin-left: 20%;
 }

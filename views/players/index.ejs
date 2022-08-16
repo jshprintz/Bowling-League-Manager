@@ -28,7 +28,7 @@
                 <td class="center"><%= players[i].avg %></td>
                 <td>
                     <% for(let n=0; n < players[i].leagues.length; n++) { %> 
-                        <a href="/leagues/<%= players[i].leagues[n]._id %>"><%= players[i].leagues[n].leagueName %> </a>
+                        <a href="/leagues/<%= players[i].leagues[n]._id %>"><%= players[i].leagues[n].leagueName %> </a><br>
                     <% } %> 
                 </td>
                 <!-- If User Logged in -->

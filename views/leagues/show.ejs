@@ -16,11 +16,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr class="large">
         <td></td>
         <td><%= league.startDate.toLocaleDateString()  %></td>
         <td><%= league.dayOfWeek %></td>
-        <td><%= league.timeOfWeek %></td>
+        <td><%= convertTime(league.timeOfWeek) %></td>
         <td><%= league.duration %> weeks</td>
         <td></td>
         </tr>
@@ -37,9 +37,7 @@
         <th>Created By</th>
         <th>Team Name</th>
         <th>Contact</th>
-        <th>Contact Email</th>
         <th>Captain</th>
-        <th>Captain Email</th>
         </tr>
     </thead>
     <tbody>
@@ -48,9 +46,7 @@
                 <td><img alt="Avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer"><%= t.userName %></td>
                 <td><a href="/teams/<%= t._id %>"><%= t.teamName %></a></td>
                 <td><%= t.contactName %></td>
-                <td><%= t.contactEmail %></td>
                 <td><%= t.captainName %></td>
-                <td><%= t.captainEmail %></td>
             </tr>
         <% }); %> 
     </tbody>
@@ -59,5 +55,17 @@
 <% } %>
 
 </section>
+
+
+<% function convertTime(time){
+    let hour = parseInt(time.substring(0,2))
+    let minute = time.substring(3,5)
+    if (hour > 12) {
+        hour -= 12;
+        return `${hour}:${minute} PM`;
+    } else {
+        return `${hour}:${minute} AM`
+    }
+} %> 
 
 <%- include('../partials/footer') %>

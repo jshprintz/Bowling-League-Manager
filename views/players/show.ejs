@@ -9,6 +9,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Average</th>
+        <th>Leagues</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +17,11 @@
         <td><%= player.name %></td>
         <td><%= player.email %></td>
         <td><%= player.avg %></td>
+        <td>
+            <% for(let n=0; n < player.leagues.length; n++) { %> 
+                <a href="/leagues/<%= player.leagues[n]._id %>"><%= player.leagues[n].leagueName %> </a><br>
+            <% } %> 
+        </td>
         </tr>
     </tbody>
 </table>

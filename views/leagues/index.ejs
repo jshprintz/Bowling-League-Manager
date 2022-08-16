@@ -20,11 +20,26 @@
                 <td><a href="/leagues/<%= l._id %>"><%= l.leagueName %></a></td>
                 <td><%= l.startDate.toLocaleDateString()  %></td>
                 <td><%= l.dayOfWeek %></td>
-                <td><%= l.timeOfWeek %></td>
+                <td><%= convertTime(l.timeOfWeek) %></td>
                 <td><%= l.duration %> weeks</td>
             </tr>
         <% }); %> 
     </tbody>
     </table>
 <br><br>
+
+
+<!-- Convert military time to regular time -->
+<% function convertTime(time){
+    let hour = parseInt(time.substring(0,2))
+    let minute = time.substring(3,5)
+    if (hour > 12) {
+        hour -= 12;
+        return `${hour}:${minute} PM`;
+    } else {
+        return `${hour}:${minute} AM`
+    }
+} %> 
+
+
 <%- include('../partials/footer') %>

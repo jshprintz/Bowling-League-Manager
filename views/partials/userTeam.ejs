@@ -30,14 +30,14 @@
 <!-- Add to Team form -->
 <form id="add-per-to-team" action="/teams/<%= team._id %>/players" method="POST" class="add-a-team-form">
     <h4>Please select a player from the list below.</h4>
-<select name="playerId">
+<select name="playerId" id="select-name">
 <!-- https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value -->
 <% allPlayers.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); %> 
 <%- allPlayers.map(p=>
     `<option value="${p._id}">${p.name}</option>`
     ).join('') %>
 </select>
-<button type="submit" class="button-82-pushable">
+<button type="submit" class="button-82-pushable" id="add-player-to-team-btn">
     <span class="button-82-shadow"></span>
     <span class="button-82-edge"></span>
     <span class="button-82-front text">

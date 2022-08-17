@@ -300,3 +300,8 @@ h2 {
   margin-bottom: 15px;
   margin-left: 20%;
 }
+
+.avatar {
+  height: 40px;
+  border-radius: 50%;
+}

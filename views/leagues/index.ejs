@@ -6,6 +6,7 @@
 <table id="list">
     <thead>
         <tr>
+        <th>Created By</th>
         <th>Name</th>
         <th>Start Date</th>
         <th>Day of Week</th>
@@ -17,6 +18,7 @@
         <% league.sort((a,b) => (a.startDate > b.startDate) ? 1 : ((b.startDate > a.startDate) ? -1 : 0)); %>
         <% league.forEach(function(l) { %>
             <tr class="row" id="rowId">
+                <td><img alt="Avatar" src="<%= l.teams.userAvatar %>" referrerpolicy="no-referrer" class="avatar"><br><%= l.teams.userName %></td>
                 <td><a href="/leagues/<%= l._id %>"><%= l.leagueName %></a></td>
                 <td class="start"><%= l.startDate.toLocaleDateString()  %></td>
                 <td><%= l.dayOfWeek %></td>

@@ -24,6 +24,10 @@
   </form>
 </nav>
 
+
+<% if (league.teams.length === (league.duration+1)) { %>
+  <h3 class="add-a-team-form" id="maxed-out">TEAMS MAXED OUT</h3>
+  <% } else { %> 
     <div class="add-a-team-form">
       <h2>New Team</h2>
       <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
@@ -46,7 +50,7 @@
           <label>Captain Name:</label>
           <input type="Text" name="captainName" required></input>
         </div>
-
       </form>
   </div>
+  <% } %> 
   <% } %>

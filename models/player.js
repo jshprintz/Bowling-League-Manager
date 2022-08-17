@@ -6,7 +6,7 @@ const playerSchema = new Schema({
     email: String,
     avg: Number,
     leagues: Array,
-    user: [{type: mongoose.Schema.Types.ObjectId, ref: 'Profile'}],
+    user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     userName: String,
     userAvatar: String,
 }, {

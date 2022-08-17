@@ -27,11 +27,8 @@
     </tbody>
     </table>
 
-    <% if (league.teams.length === (league.duration+1)) { %>
-        <h3 class="add-a-team-form" id="maxed-out">TEAMS MAXED OUT</h3>
-    <% } else { %> 
     <%- include('../partials/userLeagues') %>
-    <% } %> 
+
 
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>
@@ -48,7 +45,7 @@
     <tbody>
         <% league.teams.forEach(function(t) { %>
             <tr class="row">
-                <td><img alt="Avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer"><%= t.userName %></td>
+                <td><img alt="Avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" class="avatar"><br><%= t.userName %></td>
                 <td><a href="/teams/<%= t._id %>"><%= t.teamName %></a></td>
                 <td><%= t.contactName %></td>
                 <td><%= t.captainName %></td>

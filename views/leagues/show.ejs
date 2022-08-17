@@ -45,7 +45,7 @@
     <tbody>
         <% league.teams.forEach(function(t) { %>
             <tr class="row">
-                <td><img alt="Avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer" class="avatar"><br><%= t.userName %></td>
+                <td class="avatar"><img alt="Avatar" src="<%= t.userAvatar %>" referrerpolicy="no-referrer"><br><%= t.userName %></td>
                 <td><a href="/teams/<%= t._id %>"><%= t.teamName %></a></td>
                 <td><%= t.contactName %></td>
                 <td><%= t.captainName %></td>

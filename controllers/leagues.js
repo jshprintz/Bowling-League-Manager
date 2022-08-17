@@ -62,7 +62,8 @@ function deleteLeague(req, res) {
 
 // Create league
 function create(req, res) {
-    League.create(req.body, function(err, leagueDoc){        
+    League.create(req.body, function(err, leagueDoc){ 
+
         if (err) {
             console.log(err, "<- err in the leage create controller")
             return res.render("league/new.ejs");

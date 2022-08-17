@@ -302,6 +302,9 @@ h2 {
 }
 
 .avatar {
+  font-size: 8pt;
+}
+.avatar > img {
   height: 40px;
   border-radius: 50%;
 }

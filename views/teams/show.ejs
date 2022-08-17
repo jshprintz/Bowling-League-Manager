@@ -37,6 +37,7 @@
     <table>
     <thead>
         <tr>
+        <th>Created By</th>
         <th>Name</th>
         <th>Email</th>
         <th>Average</th>
@@ -45,6 +46,7 @@
     <tbody>
         <% for(let i=0; i<players.length; i++) { %>
             <tr class="row"> 
+                <td class="avatar"><img alt="Avatar" src="<%= team.userAvatar %>" referrerpolicy="no-referrer" ><br><%= team.userName %></td>
                 <td><a href="/players/<%= players[i]._id %> "><%= players[i].name %></a></td>
                 <td><%= players[i].email %></td>
                 <td><%= players[i].avg %></td>

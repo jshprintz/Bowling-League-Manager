@@ -61,7 +61,7 @@ function deleteLeague(req, res) {
                     if(allPlayers[i].leagues[n].leagueName === leagueDoc.leagueName){
                         allPlayers[i].leagues.splice(n, 1); 
                         allPlayers[i].save(function(err){
-                            res.redirect('/leagues'); 
+                            res.redirect('/leagues')
                         })                   
                     }
                 }

@@ -25,6 +25,7 @@ body > nav {
   text-align: center;
   background-color: rgb(187, 131, 119, 0.7);
   border: 5px outset #BB8377;
+  height: 80px;
 }
 
 .user-nav {
@@ -64,7 +65,8 @@ nav > a {
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
-  font-size: 16pt;
+  font-size: 20pt;
+  align-items: center;
 }
 
 
@@ -316,5 +318,10 @@ h2 {
 }
 .avatar-large > img {
   height: 80px;
+  border-radius: 50%;
+}
+
+#avatar-nav {
+  height: 40px;
   border-radius: 50%;
 }

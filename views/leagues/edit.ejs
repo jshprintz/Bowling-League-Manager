@@ -1,7 +1,9 @@
 <%- include('../partials/header') %>
-
+<br>
+<h2>EDIT LEAGUE</h2>
+<br>
 <form id="new-form" action="/leagues/<%= league.id %>?_method=PUT" 
-  method="POST">
+  method="POST" class="add-a-team-form">
   <label>Name:</label>
   <input type="text" name="leagueName" value="<%= league.leagueName %> " required><br>
   <label>Start Date:</label>
@@ -21,7 +23,13 @@
    <i>Current: <%= league.timeOfWeek %> </i><br>
   <label>Duration:</label>
   <input type="number" name="duration" value="<%= league.duration %> " required> weeks |  <i>Current: <%= league.duration %> weeks</i><br><br>
-  <input type="submit" value="Update League">
+  <button type="submit" class="button-82-pushable" value="Update League">
+    <span class="button-82-shadow"></span>
+    <span class="button-82-edge"></span>
+    <span class="button-82-front text">
+    UPDATE LEAGUE
+    </span>
+</button>
 </form>
 
 <%- include('../partials/footer') %>

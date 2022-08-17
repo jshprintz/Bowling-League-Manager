@@ -54,19 +54,23 @@ function show(req, res) {
 
 // Delete League
 function deleteLeague(req, res) {
-    League.findByIdAndDelete(req.params.id, function(err, leagueDoc){
+    
+    League.findById(req.params.id, function(err, leagueDoc){
         Player.find({}, function(err, allPlayers){
             for (let i=0; i<allPlayers.length; i++){
                 for (let n=0; n<allPlayers[i].leagues.length; n++){
                     if(allPlayers[i].leagues[n].leagueName === leagueDoc.leagueName){
                         allPlayers[i].leagues.splice(n, 1); 
                         allPlayers[i].save(function(){
-                            res.redirect('/leagues')
-                        })                   
+                        })
                     }
                 }
             }
         })
+    })
+
+    League.findByIdAndDelete(req.params.id, function(err){
+        res.redirect('/leagues');
     })
 }
 

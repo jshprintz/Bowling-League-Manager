@@ -27,9 +27,11 @@
     </tbody>
     </table>
 
-    
+    <!-- Only show this menu if the user hasn't entered any teams
+    or if the user created the league -->
+    <% if ((!league.teams.length) || (user?._id.equals(league.teams[0].user[0]))) { %> 
     <%- include('../partials/userLeagues') %>
-
+    <% } %>
 
 <!-- Display all of the teams -->
 <% if (league.teams.length) { %>

@@ -51,7 +51,7 @@
                 <td><%= players[i].email %></td>
                 <td><%= players[i].avg %></td>
                 
-                <% if (user) { %>
+                <% if (user?._id.equals(team.user[0])) { %>
                 <td>
                 <form action="/teams/<%= team._id %>/players/<%= players[i]._id %>?_method=DELETE" method="POST">
                     <button type="submit">X</button>

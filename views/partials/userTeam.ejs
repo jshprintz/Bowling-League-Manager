@@ -1,6 +1,6 @@
-<!-- show TEAM information for logged in user -->
+<!-- show TEAM information for logged in user --> 
 
-<% if (user) { %>
+<% if (user?._id.equals(team.user[0])) { %>
 <nav class="user-nav">
 
     <form action="/teams/<%= team.id %>/edit"

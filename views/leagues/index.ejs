@@ -18,7 +18,12 @@
         <% league.sort((a,b) => (a.startDate > b.startDate) ? 1 : ((b.startDate > a.startDate) ? -1 : 0)); %>
         <% league.forEach(function(l) { %>
             <tr class="row" id="rowId">
+                <% if (l.teams.length) { %> 
                 <td class="avatar"><img alt="Avatar" src="<%= l.teams[0].userAvatar %>" referrerpolicy="no-referrer"><br><%= l.teams[0].userName %></td>
+                <% } else { %>
+                    <td></td>
+                <% } %> 
+                
                 <td><a href="/leagues/<%= l._id %>"><%= l.leagueName %></a></td>
                 <td class="start"><%= l.startDate.toLocaleDateString()  %></td>
                 <td><%= l.dayOfWeek %></td>

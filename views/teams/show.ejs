@@ -1,68 +1,88 @@
 <%- include('../partials/header') %>
 
-<section class="show-page">
-    <h2><%= team.teamName %> Details</h2>
-    <form action="/leagues/<%= league.id %>"
-        class="edit-form" method="GET" id="back-to-league-btn">
-        <button type="submit" class="button-82-pushable">
-            <span class="button-82-shadow"></span>
-            <span class="button-82-edge"></span>
-            <span class="button-82-front text">
-            <span class="large"><%= league.leagueName %></span> League Details
-            </span>
-        </button>
-    </form>
-    
-<table>
-    <thead>
-        <tr>
-        <th>Contact</th>
-        <th></th>
-        <th>Captain</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>   
-        <td><%= team.contactName %></td>
-        <td></td>
-        <td><%= team.captainName %></td>
-        </tr>
-    </tbody>
-</table>
-<%- include('../partials/userTeam') %>
+    <section class="show-page">
+        <h2>
+            <%= team.teamName %> Details
+        </h2>
+        <form action="/leagues/<%= league.id %>" class="edit-form" method="GET" id="back-to-league-btn">
+            <button type="submit" class="button-82-pushable">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    <span class="large">
+                        <%= league.leagueName %>
+                    </span> League Details
+                </span>
+            </button>
+        </form>
 
-<!-- Display all of the Players on the team -->
-<% if (players.length) { %>
-    <h2><%= team.teamName %> Players</h2>
-    <table>
-    <thead>
-        <tr>
-        <th>Created By</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Average</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for(let i=0; i<players.length; i++) { %>
-            <tr class="row"> 
-                <td class="avatar"><img alt="Avatar" src="<%= team.userAvatar %>" referrerpolicy="no-referrer" ><br><%= team.userName %></td>
-                <td><a href="/players/<%= players[i]._id %> "><%= players[i].name %></a></td>
-                <td><%= players[i].email %></td>
-                <td><%= players[i].avg %></td>
-                
-                <% if (user?._id.equals(team.user[0])) { %>
-                <td>
-                <form action="/teams/<%= team._id %>/players/<%= players[i]._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button>
-                </form>
-                </td>
+        <table>
+            <thead>
+                <tr>
+                    <th>Contact</th>
+                    <th></th>
+                    <th>Captain</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= team.contactName %>
+                    </td>
+                    <td></td>
+                    <td>
+                        <%= team.captainName %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <%- include('../partials/userTeam') %>
+
+            <!-- Display all of the Players on the team -->
+            <% if (players.length) { %>
+                <h2>
+                    <%= team.teamName %> Players
+                </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Created By</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Average</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i=0; i<players.length; i++) { %>
+                            <tr class="row">
+                                <td class="avatar"><img alt="Avatar" src="<%= team.userAvatar %>"
+                                        referrerpolicy="no-referrer"><br>
+                                    <%= team.userName %>
+                                </td>
+                                <td><a href="/players/<%= players[i]._id %> ">
+                                        <%= players[i].name %>
+                                    </a></td>
+                                <td>
+                                    <%= players[i].email %>
+                                </td>
+                                <td>
+                                    <%= players[i].avg %>
+                                </td>
+
+                                <% if (user?._id.equals(team.user[0])) { %>
+                                    <td>
+                                        <form
+                                            action="/teams/<%= team._id %>/players/<%= players[i]._id %>?_method=DELETE"
+                                            method="POST">
+                                            <button type="submit">X</button>
+                                        </form>
+                                    </td>
+                                    <% } %>
+                            </tr>
+                            <% }; %>
+                    </tbody>
+                </table>
                 <% } %>
-            </tr>
-        <% }; %> 
-    </tbody>
-    </table>
-<% } %>
-</section>
+    </section>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

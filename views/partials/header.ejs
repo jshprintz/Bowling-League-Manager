@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title>Let's Go Bowling</title>
 </head>
+
 <body>
   <nav>
     <a href="/leagues" class="button-82-pushable">
@@ -18,7 +20,7 @@
       <span class="button-82-front text">ALL LEAGUES
       </span>
     </a>
-    
+
     <a href="/players" class="button-82-pushable">
       <span class="button-82-shadow"></span>
       <span class="button-82-edge"></span>
@@ -31,20 +33,19 @@
         <span class="button-82-shadow"></span>
         <span class="button-82-edge"></span>
         <span class="button-82-front text">
-      LOG OUT
-      <img alt="Avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" id="avatar-nav">
-      </span>
-    </a>
-    <% } else { %>
-      <a href="/auth/google" class="button-82-pushable">
-        <span class="button-82-shadow"></span>
-        <span class="button-82-edge"></span>
-        <span class="button-82-front text">
-          LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png">
-      </span>
-    </a>
+          LOG OUT
+          <img alt="Avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" id="avatar-nav">
+        </span>
+      </a>
+      <% } else { %>
+        <a href="/auth/google" class="button-82-pushable">
+          <span class="button-82-shadow"></span>
+          <span class="button-82-edge"></span>
+          <span class="button-82-front text">
+            LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png">
+          </span>
+        </a>
 
-    <% } %>
+        <% } %>
   </nav>
   <main>
-   

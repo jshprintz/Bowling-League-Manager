@@ -1,65 +1,77 @@
 <%- include('../partials/header') %>
 
-<section class="show-page">
-    <h2><%= player.name %> Details</h2>
-    
-<table>
-    <thead>
-        <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Average</th>
-        <th>Leagues</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>   
-        <td><%= player.name %></td>
-        <td><%= player.email %></td>
-        <td><%= player.avg %></td>
-        <td>
-            <% for(let n=0; n < player.leagues.length; n++) { %> 
-                <a href="/leagues/<%= player.leagues[n]._id %>"><%= player.leagues[n].leagueName %> </a><br>
-            <% } %> 
-        </td>
-        </tr>
-    </tbody>
-</table>
+    <section class="show-page">
+        <h2>
+            <%= player.name %> Details
+        </h2>
 
-<% if (user) { %>
-    <nav class="user-nav">
-    
-        <form action="/players/<%= player.id %>?_method=DELETE"
-            class="delete-form" method="POST" id="delete-player-btn">
-            <button type="submit" class="button-82-pushable">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
-                DELETE PLAYER
-                </span>
-            </button>
-        </form>
-    </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Average</th>
+                    <th>Leagues</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= player.name %>
+                    </td>
+                    <td>
+                        <%= player.email %>
+                    </td>
+                    <td>
+                        <%= player.avg %>
+                    </td>
+                    <td>
+                        <% for(let n=0; n < player.leagues.length; n++) { %>
+                            <a href="/leagues/<%= player.leagues[n]._id %>">
+                                <%= player.leagues[n].leagueName %>
+                            </a><br>
+                            <% } %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <br><br>
-<h2>Update <%= player.name %> </h2>
-<form id="update-player-form" class="add-a-team-form" method="POST" action="/players/<%= player._id %>?_method=PUT">
-  <label>Name:</label>
-  <input type="Text" name="name" value="<%= player.name %> " required></input><br>
-  <label>Email:</label>
-  <input type="Text" name="email" value="<%= player.email %> " required></input><br>
-  <label>Average:</label>
-  <input type="Text" name="avg" value="<%= player.avg %> " required></input><br><br>
-  <button type="submit" class="button-82-pushable" value="Update Player">
-    <span class="button-82-shadow"></span>
-    <span class="button-82-edge"></span>
-    <span class="button-82-front text">
-    UPDATE PLAYER
-    </span>
-</button>
-</form>
-<% } %> 
+        <% if (user) { %>
+            <nav class="user-nav">
+
+                <form action="/players/<%= player.id %>?_method=DELETE" class="delete-form" method="POST"
+                    id="delete-player-btn">
+                    <button type="submit" class="button-82-pushable">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">
+                            DELETE PLAYER
+                        </span>
+                    </button>
+                </form>
+            </nav>
+
+            <br><br>
+            <h2>Update <%= player.name %>
+            </h2>
+            <form id="update-player-form" class="add-a-team-form" method="POST"
+                action="/players/<%= player._id %>?_method=PUT">
+                <label>Name:</label>
+                <input type="Text" name="name" value="<%= player.name %> " required></input><br>
+                <label>Email:</label>
+                <input type="Text" name="email" value="<%= player.email %> " required></input><br>
+                <label>Average:</label>
+                <input type="Text" name="avg" value="<%= player.avg %> " required></input><br><br>
+                <button type="submit" class="button-82-pushable" value="Update Player">
+                    <span class="button-82-shadow"></span>
+                    <span class="button-82-edge"></span>
+                    <span class="button-82-front text">
+                        UPDATE PLAYER
+                    </span>
+                </button>
+            </form>
+            <% } %>
 
 
 
-<%- include('../partials/footer') %>
+                <%- include('../partials/footer') %>

@@ -1,46 +1,44 @@
 <%- include('../partials/header') %>
-<br>
-<h2>EDIT LEAGUE</h2>
-<br>
-<form id="new-form" action="/leagues/<%= league.id %>?_method=PUT" 
-  method="POST" class="add-a-team-form">
-  <label>Name:</label>
-  <input type="text" name="leagueName" value="<%= league.leagueName %> " required><br>
-  <label>Start Date:</label>
-  <input type="date" name="startDate" value="<%= league.startDate %> " required> <i>Current: <%= league.startDate.toLocaleDateString() %> </i><br>
-  <label>Day of Week</label>
-  <select name="dayOfWeek">
-    <option value="Monday">Monday</option>
-    <option value="Tuesday">Tuesday</option>
-    <option value="Wednesday">Wednesday</option>
-    <option value="Thursday">Thursday</option>
-    <option value="Friday">Friday</option>
-    <option value="Saturday">Saturday</option>
-    <option value="Sunday">Sunday</option>
-  </select> <i>Current: <%= league.dayOfWeek %> </i><br>
-  <label>Time of Week:</label>
-  <input type="time" name="timeOfWeek" value="<%= league.timeOfWeek %> " required>
-   <i>Current: <%= convertTime(league.timeOfWeek) %> </i><br>
-  <label>Duration:</label>
-  <input type="number" name="duration" value="<%= league.duration %> " required> weeks <br> <i>Current: <%= league.duration %> weeks</i><br><br>
-  <button type="submit" class="button-82-pushable" value="Update League">
-    <span class="button-82-shadow"></span>
-    <span class="button-82-edge"></span>
-    <span class="button-82-front text">
-    UPDATE LEAGUE
-    </span>
-</button>
-</form>
+  <br>
+  <h2>EDIT LEAGUE</h2>
+  <br>
+  <form id="new-form" action="/leagues/<%= league.id %>?_method=PUT" method="POST" class="add-a-team-form">
+    <label>Name:</label>
+    <input type="text" name="leagueName" value="<%= league.leagueName %> " required><br>
+    <label>Start Date:</label>
+    <input type="date" name="startDate" value="<%= league.startDate %> " required> <i>Current: <%=
+        league.startDate.toLocaleDateString() %> </i><br>
+    <label>Day of Week</label>
+    <select name="dayOfWeek">
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+      <option value="Sunday">Sunday</option>
+    </select> <i>Current: <%= league.dayOfWeek %> </i><br>
+    <label>Time of Week:</label>
+    <input type="time" name="timeOfWeek" value="<%= league.timeOfWeek %> " required>
+    <i>Current: <%= convertTime(league.timeOfWeek) %> </i><br>
+    <label>Duration:</label>
+    <input type="number" name="duration" value="<%= league.duration %> " required> weeks <br> <i>Current: <%=
+        league.duration %> weeks</i><br><br>
+    <button type="submit" class="button-82-pushable" value="Update League">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text">
+        UPDATE LEAGUE
+      </span>
+    </button>
+  </form>
 
-<% function convertTime(time){
-  let hour = parseInt(time.substring(0,2))
-  let minute = time.substring(3,5)
-  if (hour > 12) {
-      hour -= 12;
-      return `${hour}:${minute} PM`;
-  } else {
-      return `${hour}:${minute} AM`
-  }
-} %> 
+  <% function convertTime(time){ let hour=parseInt(time.substring(0,2)); let minute=time.substring(3,5); if (hour> 12) {
+    hour -= 12;
+    return `${hour}:${minute} PM`;
+    } else {
+    return `${hour}:${minute} AM`
+    }
+    } %>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

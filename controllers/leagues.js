@@ -24,7 +24,7 @@ function index(req, res) {
 
 // Display edit page
 function edit(req, res) {
-    League.findById(req.params.id, function(err, leagueDoc){
+    League.findById(req.params.id, function (err, leagueDoc) {
         res.render("leagues/edit.ejs", {
             league: leagueDoc,
         });
@@ -33,8 +33,8 @@ function edit(req, res) {
 
 //Update League
 function update(req, res) {
-    League.findByIdAndUpdate(req.params.id, req.body, function(err, leagueDoc){
-        leagueDoc.save(function(err){
+    League.findByIdAndUpdate(req.params.id, req.body, function (err, leagueDoc) {
+        leagueDoc.save(function (err) {
             res.redirect('/leagues');
         })
     })
@@ -42,8 +42,8 @@ function update(req, res) {
 
 //Show League
 function show(req, res) {
-    League.findById(req.params.id, function(err, leagueDoc){
-        Player.find({_id: {$nin: leagueDoc.teams.players}}, function(err, players){
+    League.findById(req.params.id, function (err, leagueDoc) {
+        Player.find({ _id: { $nin: leagueDoc.teams.players } }, function (err, players) {
             res.render('leagues/show.ejs', {
                 league: leagueDoc,
                 players: players,
@@ -54,14 +54,14 @@ function show(req, res) {
 
 // Delete League
 function deleteLeague(req, res) {
-    
-    League.findById(req.params.id, function(err, leagueDoc){
-        Player.find({}, function(err, allPlayers){
-            for (let i=0; i<allPlayers.length; i++){
-                for (let n=0; n<allPlayers[i].leagues.length; n++){
-                    if(allPlayers[i].leagues[n].leagueName === leagueDoc.leagueName){
-                        allPlayers[i].leagues.splice(n, 1); 
-                        allPlayers[i].save(function(){
+
+    League.findById(req.params.id, function (err, leagueDoc) {
+        Player.find({}, function (err, allPlayers) {
+            for (let i = 0; i < allPlayers.length; i++) {
+                for (let n = 0; n < allPlayers[i].leagues.length; n++) {
+                    if (allPlayers[i].leagues[n].leagueName === leagueDoc.leagueName) {
+                        allPlayers[i].leagues.splice(n, 1);
+                        allPlayers[i].save(function () {
                         })
                     }
                 }
@@ -69,7 +69,7 @@ function deleteLeague(req, res) {
         })
     })
 
-    League.findByIdAndDelete(req.params.id, function(err){
+    League.findByIdAndDelete(req.params.id, function (err) {
         res.redirect('/leagues');
     })
 }
@@ -77,7 +77,7 @@ function deleteLeague(req, res) {
 
 // Create league
 function create(req, res) {
-    League.create(req.body, function(err, leagueDoc){ 
+    League.create(req.body, function (err, leagueDoc) {
 
         if (err) {
             console.log(err, "<- err in the leage create controller")

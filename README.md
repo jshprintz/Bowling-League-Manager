@@ -28,6 +28,8 @@ The simple user interface makes it easy to navigate without any instruction. Mak
 
 [Bowling alley picture of shoes](https://unsplash.com/photos/d-1FY75fh_s)
 
+[Josh W Comeau's](https://getcssscan.com/css-buttons-examples) Amazing CSS button template (#82)
+
 ---
 
 ## Wireframe and Planning

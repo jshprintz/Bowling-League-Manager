@@ -1,51 +1,62 @@
 <%- include('../partials/header') %>
-<%- include('../partials/userIndex') %>
+    <%- include('../partials/userIndex') %>
 
-<h1>Leagues</h1>
+        <h1>Leagues</h1>
 
-<table id="list">
-    <thead>
-        <tr>
-        <th>League Manager</th>
-        <th>Name</th>
-        <th>Start Date</th>
-        <th>Day of Week</th>
-        <th>Time of Week</th>
-        <th>Duration</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% league.sort((a,b) => (a.startDate > b.startDate) ? 1 : ((b.startDate > a.startDate) ? -1 : 0)); %>
-        <% league.forEach(function(l) { %>
-            <tr class="row" id="rowId">
-                <% if (l.teams.length) { %> 
-                <td class="avatar"><img alt="Avatar" src="<%= l.teams[0].userAvatar %>" referrerpolicy="no-referrer"><br><%= l.teams[0].userName %></td>
-                <% } else { %>
-                    <td></td>
-                <% } %> 
-                
-                <td><a href="/leagues/<%= l._id %>"><%= l.leagueName %></a></td>
-                <td class="start"><%= l.startDate.toLocaleDateString()  %></td>
-                <td><%= l.dayOfWeek %></td>
-                <td><%= convertTime(l.timeOfWeek) %></td>
-                <td class="length"><%= l.duration %> weeks</td>
-            </tr>
-        <% }); %> 
-    </tbody>
-    </table>
-<br><br>
+        <table id="list">
+            <thead>
+                <tr>
+                    <th>League Manager</th>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>Day of Week</th>
+                    <th>Time of Week</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% league.sort((a,b)=> (a.startDate > b.startDate) ? 1 : ((b.startDate > a.startDate) ? -1 : 0)); %>
+                    <% league.forEach(function(l) { %>
+                        <tr class="row" id="rowId">
+                            <% if (l.teams.length) { %>
+                                <td class="avatar"><img alt="Avatar" src="<%= l.teams[0].userAvatar %>"
+                                        referrerpolicy="no-referrer"><br>
+                                    <%= l.teams[0].userName %>
+                                </td>
+                                <% } else { %>
+                                    <td></td>
+                                    <% } %>
 
-<!-- Convert military time to regular time -->
-<% function convertTime(time){
-    let hour = parseInt(time.substring(0,2))
-    let minute = time.substring(3,5)
-    if (hour > 12) {
-        hour -= 12;
-        return `${hour}:${minute} PM`;
-    } else {
-        return `${hour}:${minute} AM`
-    }
-} %> 
+                                        <td><a href="/leagues/<%= l._id %>">
+                                                <%= l.leagueName %>
+                                            </a></td>
+                                        <td class="start">
+                                            <%= l.startDate.toLocaleDateString() %>
+                                        </td>
+                                        <td>
+                                            <%= l.dayOfWeek %>
+                                        </td>
+                                        <td>
+                                            <%= convertTime(l.timeOfWeek) %>
+                                        </td>
+                                        <td class="length">
+                                            <%= l.duration %> weeks
+                                        </td>
+                        </tr>
+                        <% }); %>
+            </tbody>
+        </table>
+        <br><br>
+
+        <!-- Convert military time to regular time -->
+        <% function convertTime(time){ let hour=parseInt(time.substring(0,2)); let minute=time.substring(3,5); if (hour>
+            12) {
+            hour -= 12;
+            return `${hour}:${minute} PM`;
+            } else {
+            return `${hour}:${minute} AM`
+            }
+            } %>
 
 
-<%- include('../partials/footer') %>
+            <%- include('../partials/footer') %>

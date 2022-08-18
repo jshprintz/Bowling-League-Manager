@@ -7,8 +7,8 @@ const teamSchema = new mongoose.Schema({
     contactEmail: String,
     captainName: String,
     captainEmail: String,
-    players: [{type: mongoose.Schema.Types.ObjectId, ref: 'Player'}],
-    user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    players: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Player' }],
+    user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     userName: String,
     userAvatar: String,
 });

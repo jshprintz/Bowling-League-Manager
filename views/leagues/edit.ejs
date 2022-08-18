@@ -20,9 +20,9 @@
   </select> <i>Current: <%= league.dayOfWeek %> </i><br>
   <label>Time of Week:</label>
   <input type="time" name="timeOfWeek" value="<%= league.timeOfWeek %> " required>
-   <i>Current: <%= league.timeOfWeek %> </i><br>
+   <i>Current: <%= convertTime(league.timeOfWeek) %> </i><br>
   <label>Duration:</label>
-  <input type="number" name="duration" value="<%= league.duration %> " required> weeks |  <i>Current: <%= league.duration %> weeks</i><br><br>
+  <input type="number" name="duration" value="<%= league.duration %> " required> weeks <br> <i>Current: <%= league.duration %> weeks</i><br><br>
   <button type="submit" class="button-82-pushable" value="Update League">
     <span class="button-82-shadow"></span>
     <span class="button-82-edge"></span>
@@ -31,5 +31,16 @@
     </span>
 </button>
 </form>
+
+<% function convertTime(time){
+  let hour = parseInt(time.substring(0,2))
+  let minute = time.substring(3,5)
+  if (hour > 12) {
+      hour -= 12;
+      return `${hour}:${minute} PM`;
+  } else {
+      return `${hour}:${minute} AM`
+  }
+} %> 
 
 <%- include('../partials/footer') %>

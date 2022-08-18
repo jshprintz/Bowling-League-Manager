@@ -1,4 +1,20 @@
 # Bowling League Manager
+---
+
+### FINALLY, an easy to use league manager application designed to organize all of your leagues, teams, and players!
+
+---
+
+## Launch App HERE!
+
+The simple user interface makes it easy to navigate without any instruction. Make sure you log in if you want to make any changes!
+
+[Click here](https://trello.com/b/hKamNz5M/bowling-league-manager) to view the Trello planning behind the project!
+
+---
+
+
+
 
 https://unsplash.com/photos/d-1FY75fh_s
 bowling alley pic

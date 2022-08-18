@@ -38,18 +38,29 @@
             Add a Team
           </span>
         </button>
+        <% players.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); reverse = true; %>
         <div id="add-team-name">
           <label>Team Name:</label>
           <input type="Text" name="teamName" required></input>
         </div>
         <div id="add-contact-name">
           <label>Contact Name:</label>
-           <input type="Text" name="contactName" required></input>
+           <select name="contactName" required>
+            <% players.forEach(function(p) { %>
+              <option value="<%= p.name %> "><%= p.name %> </option>
+            <% }) %> 
+           </select>
         </div>
         <div id="add-captain-name">
           <label>Captain Name:</label>
-          <input type="Text" name="captainName" required></input>
+          <select name="captainName" required>
+            <% players.forEach(function(p) { %>
+              <option value="<%= p.name %> "><%= p.name %> </option>
+            <% }) %> 
+           </select>
         </div>
       </form>
   </div>
   <% } %> 
+  
+  

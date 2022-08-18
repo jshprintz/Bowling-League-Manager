@@ -1,9 +1,11 @@
 <%- include('../partials/header') %>
 
     <section class="show-page">
-        <h2>
-            <%= team.teamName %> Details
-        </h2>
+        <p>
+            <span class="large-header">
+                <%= team.teamName %>
+            </span> Details
+        </p>
         <form action="/leagues/<%= league.id %>" class="edit-form" method="GET" id="back-to-league-btn">
             <button type="submit" class="button-82-pushable">
                 <span class="button-82-shadow"></span>
@@ -40,9 +42,11 @@
 
             <!-- Display all of the Players on the team -->
             <% if (players.length) { %>
-                <h2>
-                    <%= team.teamName %> Players
-                </h2>
+                <p>
+                    <span class="large-header">
+                        <%= team.teamName %>
+                    </span>Players
+                </p>
                 <table>
                     <thead>
                         <tr>

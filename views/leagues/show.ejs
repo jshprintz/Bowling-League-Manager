@@ -3,9 +3,11 @@
     <!-- Display the individual league's details page -->
 
     <section class="show-page">
-        <h2>
-            <%= league.leagueName %> Details
-        </h2>
+        <p>
+            <span class="large-header">
+                <%= league.leagueName %>
+            </span> Details
+        </p>
         <table>
             <thead>
                 <tr>
@@ -52,9 +54,11 @@
 
                     <!-- Display all of the teams -->
                     <% if (league.teams.length) { %>
-                        <h2>
-                            <%= league.leagueName %> Teams
-                        </h2>
+                        <p>
+                            <span class="large-header">
+                                <%= league.leagueName %>
+                            </span> Teams
+                        </p>
                         <table>
                             <th></th>
                             <th>Team Name</th>

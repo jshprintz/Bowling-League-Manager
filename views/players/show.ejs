@@ -1,9 +1,11 @@
 <%- include('../partials/header') %>
 
     <section class="show-page">
-        <h2>
-            <%= player.name %> Details
-        </h2>
+        <p>
+            <span class="large-header">
+                <%= player.name %>
+            </span>Details
+        </p>
 
         <table>
             <thead>
@@ -52,8 +54,10 @@
             </nav>
 
             <br><br>
-            <h2>Update <%= player.name %>
-            </h2>
+            <p>Update <span class="large-header">
+                    <%= player.name %>
+                </span>
+            </p>
             <form id="update-player-form" class="add-a-team-form" method="POST"
                 action="/players/<%= player._id %>?_method=PUT">
                 <label>Name:</label>

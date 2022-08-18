@@ -324,3 +324,7 @@ h2 {
   height: 40px;
   border-radius: 50%;
 }
+
+.large-header {
+  font-size: 20pt;
+}

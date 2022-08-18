@@ -16,6 +16,9 @@ The simple user interface makes it easy to navigate without any instruction. Mak
 ### Keep Your Player List Organized!
 ![player-index](https://i.imgur.com/EtKAfaB.png)
 
+### Easily Create New Teams and Add Players!
+![add-player](https://i.imgur.com/j4Nys8z.png)
+
 ## Technologies Used
 - Javascript
 - HTML

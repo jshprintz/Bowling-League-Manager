@@ -11,6 +11,8 @@ module.exports = {
 
 // Update Team
 function update(req, res) {
+
+Player.find({}, function(err, allPlayers){
     League.findOneAndUpdate({"teams._id": req.params.id}, req.body, 
     function(err, teamDoc){
         // Cycle through all the teams in the league
@@ -27,11 +29,15 @@ function update(req, res) {
                 teamDoc.save(function(err){
                     res.render('teams/show.ejs', {
                         team: teamDoc.teams[i],
+                        league: teamDoc,
+                        allPlayers,
+                        players: teamDoc.teams[i].players
                     });
                 });
             };
         };
     });
+})
 };
 
 // Edit team

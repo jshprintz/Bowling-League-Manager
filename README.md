@@ -48,6 +48,16 @@ The simple user interface makes it easy to navigate without any instruction. Mak
 
 ---
 
+## Planned Updates
+- Max Players count and restriction on Teams
+- Color coded Leagues display based on Start Date and Duration
+- Ability for League Managers to give CRUD authorization to Team Captains within their own team
+- Track each week's scores and matchups with averages and win/loss total updating accordingly
+- Track each games scores, adjusting the weekly scoring accordingly
+- Track each frames scores, adjusting the game scoring accordingly
+
+---
+
 ## Additional Thanks
 - John from TA hours
 - Stack Overflow

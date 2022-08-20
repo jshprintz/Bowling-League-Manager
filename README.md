@@ -44,7 +44,7 @@ The simple user interface makes it easy to navigate without any instruction. Mak
 
 [Click here](https://trello.com/b/hKamNz5M/bowling-league-manager) to view the Trello planning behind the project!
 
-[Click here](https://whimsical.com/erd-QVjT6fGSPuEjB7ZjR1WB7K) to view the original wireframe!
+[Click here](https://whimsical.com/erd-QVjT6fGSPuEjB7ZjR1WB7K) to view the original ERD!
 
 ---
 

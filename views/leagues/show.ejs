@@ -1,102 +1,79 @@
 <%- include('../partials/header') %>
 
-    <!-- Display the individual league's details page -->
+<!-- Display the individual league's details page -->
 
 <section class="show-page">
-    <p>
-        <span class="large-header">
-            <%= league.leagueName %>
-        </span> Details
-    </p>
-    <table>
-        <thead>
-            <tr>
-                <th>League Manager</th>
-                <th>Start Date</th>
-                <th>Day of Week</th>
-                <th>Time of Week</th>
-                <th>Duration</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="large">
-                <% if (league.teams.length) { %>
-                    <td class="avatar-large"><img alt="Avatar" src="<%= league.teams[0].userAvatar %>"
-                            referrerpolicy="no-referrer"><br>
-                        <%= league.teams[0].userName %>
-                    </td>
-                    <% } else { %>
-                        <td></td>
-                        <% } %>
-                            <td>
-                                <%= league.startDate.toLocaleDateString() %>
-                            </td>
-                            <td>
-                                <%= league.dayOfWeek %>
-                            </td>
-                            <td>
-                                <%= convertTime(league.timeOfWeek) %>
-                            </td>
-                            <td>
-                                <%= league.duration %> weeks
-                            </td>
-                            <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Only show this menu if the user hasn't entered any teams
-or if the user created the league -->
-    <% if ((!league.teams.length) || (user?._id.equals(league.teams[0].user[0]))) { %>
-        <%- include('../partials/userLeagues') %>
-    <% } %>
-
-    <!-- Display all of the teams -->
-    <% if (league.teams.length) { %>
-        <p>
-            <span class="large-header">
-                <%= league.leagueName %>
-            </span> Teams
-        </p>
-        <table>
-            <th></th>
-            <th>Team Name</th>
-            <th>Contact</th>
-            <th>Captain</th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-                <% league.teams.forEach(function(t) { %>
-                    <tr class="row">
-                        <td></td>
-                        <td><a href="/teams/<%= t._id %>">
-                                <%= t.teamName %>
-                            </a></td>
-                        <td>
-                            <%= t.contactName %>
-                        </td>
-                        <td>
-                            <%= t.captainName %>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <% }); %>
-            </tbody>
-        </table>
-        <br><br><br>
+  <p><span class="large-header"> <%= league.leagueName %> </span> Details</p>
+  <table>
+    <thead>
+      <tr>
+        <th>League Manager</th>
+        <th>Start Date</th>
+        <th>Day of Week</th>
+        <th>Time of Week</th>
+        <th>Duration</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="large">
+        <% if (league.teams.length) { %>
+        <td class="avatar-large">
+          <img
+            alt="Avatar"
+            src="<%= league.teams[0].userAvatar %>"
+            referrerpolicy="no-referrer"
+          /><br />
+          <%= league.teams[0].userName %>
+        </td>
+        <% } else { %>
+        <td></td>
         <% } %>
+        <td><%= league.startDate.toLocaleDateString() %></td>
+        <td><%= league.dayOfWeek %></td>
+        <td><%= convertTime(league.timeOfWeek) %></td>
+        <td><%= league.duration %> weeks</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Only show this menu if the user hasn't entered any teams
+or if the user created the league -->
+  <% if ((!league.teams.length) || (user?._id.equals(league.teams[0].user[0])))
+  { %> <%- include('../partials/userLeagues') %> <% } %>
+
+  <!-- Display all of the teams -->
+  <% if (league.teams.length) { %>
+  <p><span class="large-header"> <%= league.leagueName %> </span> Teams</p>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Team Name</th>
+        <th>Contact</th>
+        <th>Captain</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% league.teams.forEach(function(t) { %>
+      <tr class="row">
+        <td></td>
+        <td><a href="/teams/<%= t._id %>"> <%= t.teamName %> </a></td>
+        <td><%= t.contactName %></td>
+        <td><%= t.captainName %></td>
+        <td></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <br /><br /><br />
+  <% } %>
 </section>
 
 <!-- Convert from military time -->
-<% function convertTime(time){ let hour=parseInt(time.substring(0,2)); let minute=time.substring(3,5); if (hour> 12)
-    {
-    hour -= 12;
-    return `${hour}:${minute} PM`;
-    } else {
-    return `${hour}:${minute} AM`;
-    }
-    } %>
-
-<%- include('../partials/footer') %>
+<% function convertTime(time){ let hour=parseInt(time.substring(0,2)); let
+minute=time.substring(3,5); if (hour> 12) { hour -= 12; return
+`${hour}:${minute} PM`; } else { return `${hour}:${minute} AM`; } } %> <%-
+include('../partials/footer') %>

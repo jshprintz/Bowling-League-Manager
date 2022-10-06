@@ -1,65 +1,76 @@
 <!-- Add a team -->
 
 <nav class="user-nav">
-  <form action="/leagues/<%= league.id %>/edit" class="edit-form" method="GET" id="edit-league-btn">
+  <form
+    action="/leagues/<%= league.id %>/edit"
+    class="edit-form"
+    method="GET"
+    id="edit-league-btn"
+  >
     <button type="submit" class="button-82-pushable">
       <span class="button-82-shadow"></span>
       <span class="button-82-edge"></span>
-      <span class="button-82-front text">
-        EDIT LEAGUE
-      </span>
+      <span class="button-82-front text"> EDIT LEAGUE </span>
     </button>
   </form>
 
-  <form action="/leagues/<%= league.id %>?_method=DELETE" class="delete-form" method="POST" id="delete-league-btn">
+  <form
+    action="/leagues/<%= league.id %>?_method=DELETE"
+    class="delete-form"
+    method="POST"
+    id="delete-league-btn"
+  >
     <button type="submit" class="button-82-pushable">
       <span class="button-82-shadow"></span>
       <span class="button-82-edge"></span>
-      <span class="button-82-front text">
-        DELETE LEAGUE
-      </span>
+      <span class="button-82-front text"> DELETE LEAGUE </span>
     </button>
   </form>
 </nav>
 
 <% if (league.teams.length===(league.duration+1)) { %>
-  <h3 class="add-a-team-form" id="maxed-out">TEAMS MAXED OUT</h3>
-  <% } else { %>
-    <div class="add-a-team-form">
-      <h2>New Team</h2>
-      <form id="add-team-form" method="POST" action="/leagues/<%= league._id %>/teams">
-        <button id="add-team-btn" class="button-82-pushable" role="button" type="submit" value="Add Team">
-          <span class="button-82-shadow"></span>
-          <span class="button-82-edge"></span>
-          <span class="button-82-front text">
-            Add a Team
-          </span>
-        </button>
-        <% players.sort((a,b)=> (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); reverse = true; %>
-          <div id="add-team-name">
-            <label>Team Name:</label>
-            <input type="Text" name="teamName" required></input>
-          </div>
-          <div id="add-contact-name">
-            <label>Contact Name:</label>
-            <select name="contactName" required>
-              <% players.forEach(function(p) { %>
-                <option value="<%= p.name %> ">
-                  <%= p.name %>
-                </option>
-                <% }) %>
-            </select>
-          </div>
-          <div id="add-captain-name">
-            <label>Captain Name:</label>
-            <select name="captainName" required>
-              <% players.forEach(function(p) { %>
-                <option value="<%= p.name %> ">
-                  <%= p.name %>
-                </option>
-                <% }) %>
-            </select>
-          </div>
-      </form>
+<h3 class="add-a-team-form" id="maxed-out">TEAMS MAXED OUT</h3>
+<% } else { %>
+<div class="add-a-team-form">
+  <h2>New Team</h2>
+  <form
+    id="add-team-form"
+    method="POST"
+    action="/leagues/<%= league._id %>/teams"
+  >
+    <button
+      id="add-team-btn"
+      class="button-82-pushable"
+      role="button"
+      type="submit"
+      value="Add Team"
+    >
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text"> Add a Team </span>
+    </button>
+    <% players.sort((a,b)=> (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 :
+    0)); reverse = true; %>
+    <div id="add-team-name">
+      <label>Team Name:</label>
+      <input type="Text" name="teamName" required />
     </div>
-    <% } %>
+    <div id="add-contact-name">
+      <label>Contact Name:</label>
+      <select name="contactName" required>
+        <% players.forEach(function(p) { %>
+        <option value="<%= p.name %> "><%= p.name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div id="add-captain-name">
+      <label>Captain Name:</label>
+      <select name="captainName" required>
+        <% players.forEach(function(p) { %>
+        <option value="<%= p.name %> "><%= p.name %></option>
+        <% }) %>
+      </select>
+    </div>
+  </form>
+</div>
+<% } %>

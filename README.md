@@ -1,4 +1,5 @@
 # ULTIMATE Bowling League Manager
+
 ---
 
 ### FINALLY, an easy to use league manager application designed to organize all of your leagues, teams, and players! Stop fumbling with clipboards and spreadsheets. Download the ULTIMATE Bowling League Manager and get back to the lanes!
@@ -10,16 +11,21 @@
 The simple user interface makes it easy to navigate without any instruction. Make sure you log in if you want to make any changes!
 
 ---
+
 ### View All Your Leagues In One Place!
+
 ![league-index](https://i.imgur.com/E7GX4us.png)
 
 ### Keep Your Player List Organized!
+
 ![player-index](https://i.imgur.com/EtKAfaB.png)
 
 ### Easily Create New Teams and Add Players!
+
 ![add-player](https://i.imgur.com/j4Nys8z.png)
 
 ## Technologies Used
+
 - Javascript
 - HTML
 - CSS
@@ -49,6 +55,7 @@ The simple user interface makes it easy to navigate without any instruction. Mak
 ---
 
 ## Planned Updates
+
 - Max Players count and restriction on Teams
 - Color coded Leagues display based on Start Date and Duration
 - Ability for League Managers to give CRUD authorization to Team Captains within their own team
@@ -59,6 +66,7 @@ The simple user interface makes it easy to navigate without any instruction. Mak
 ---
 
 ## Additional Thanks
+
 - John from TA hours
 - Stack Overflow
 - My very knowledgable teachers

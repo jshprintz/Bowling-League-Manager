@@ -1,47 +1,54 @@
 <!-- show TEAM information for logged in user -->
 
 <% if (user?._id.equals(team.user[0])) { %>
-    <nav class="user-nav">
+<nav class="user-nav">
+  <form
+    action="/teams/<%= team.id %>/edit"
+    class="edit-form"
+    method="GET"
+    id="edit-team-btn"
+  >
+    <button type="submit" class="button-82-pushable">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text"> EDIT TEAM </span>
+    </button>
+  </form>
 
-        <form action="/teams/<%= team.id %>/edit" class="edit-form" method="GET" id="edit-team-btn">
-            <button type="submit" class="button-82-pushable">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
-                    EDIT TEAM
-                </span>
-            </button>
-        </form>
+  <form
+    action="/teams/<%= team.id %>?_method=DELETE"
+    class="delete-form"
+    method="POST"
+    id="delete-league-btn"
+  >
+    <button type="submit" class="button-82-pushable">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text"> DELETE TEAM </span>
+    </button>
+  </form>
+</nav>
 
-        <form action="/teams/<%= team.id %>?_method=DELETE" class="delete-form" method="POST" id="delete-league-btn">
-            <button type="submit" class="button-82-pushable">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
-                    DELETE TEAM
-                </span>
-            </button>
-        </form>
-    </nav>
+<!-- Add to Team form -->
+<form
+  id="add-per-to-team"
+  action="/teams/<%= team._id %>/players"
+  method="POST"
+  class="add-a-team-form"
+>
+  <h4>Please select a player from the list below.</h4>
+  <select name="playerId" id="select-name">
+    <!-- https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value -->
+    <% allPlayers.sort((a,b)=> (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 :
+    0)); %> <%- allPlayers.map(p=> `
+    <option value="${p._id}">${p.name}</option>
+    ` ).join('') %>
+  </select>
+  <button type="submit" class="button-82-pushable" id="add-player-to-team-btn">
+    <span class="button-82-shadow"></span>
+    <span class="button-82-edge"></span>
+    <span class="button-82-front text"> ADD TO TEAM </span>
+  </button>
+</form>
 
-
-    <!-- Add to Team form -->
-    <form id="add-per-to-team" action="/teams/<%= team._id %>/players" method="POST" class="add-a-team-form">
-        <h4>Please select a player from the list below.</h4>
-        <select name="playerId" id="select-name">
-            <!-- https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value -->
-            <% allPlayers.sort((a,b)=> (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); %>
-                <%- allPlayers.map(p=>
-                    `<option value="${p._id}">${p.name}</option>`
-                    ).join('') %>
-        </select>
-        <button type="submit" class="button-82-pushable" id="add-player-to-team-btn">
-            <span class="button-82-shadow"></span>
-            <span class="button-82-edge"></span>
-            <span class="button-82-front text">
-                ADD TO TEAM
-            </span>
-        </button>
-    </form>
-
-    <% }; %>
+<% }; %>

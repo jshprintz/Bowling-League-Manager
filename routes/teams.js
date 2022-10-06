@@ -1,18 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const teamsController = require('../controllers/teams');
-const isLoggedIn = require('../config/auth')
-
+const teamsController = require("../controllers/teams");
+const isLoggedIn = require("../config/auth");
 
 //Show Team
-router.get('/teams/:id', teamsController.show);
+router.get("/teams/:id", teamsController.show);
 // create new team
-router.post('/leagues/:id/teams', isLoggedIn, teamsController.create);
+router.post("/leagues/:id/teams", isLoggedIn, teamsController.create);
 // delete team
-router.delete('/teams/:id', isLoggedIn, teamsController.delete);
+router.delete("/teams/:id", isLoggedIn, teamsController.delete);
 // Edit team
-router.get('/teams/:id/edit', isLoggedIn, teamsController.edit);
+router.get("/teams/:id/edit", isLoggedIn, teamsController.edit);
 // Update team
-router.put('/teams/:id', isLoggedIn, teamsController.update);
+router.put("/teams/:id", isLoggedIn, teamsController.update);
 
 module.exports = router;

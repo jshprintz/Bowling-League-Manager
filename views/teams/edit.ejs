@@ -1,23 +1,40 @@
 <%- include('../partials/header') %>
 
-  <br><br>
-  <h2>Update <%= team.teamName %>
-  </h2>
-  <form id="add-team-form" method="POST" class="add-a-team-form" action="/teams/<%= team._id %>?_method=PUT">
-    <label>Team Name:</label>
-    <input type="Text" name="teamName" value="<%= team.teamName %> " required></input><br>
-    <label>Contact Name:</label>
-    <input type="Text" name="contactName" value="<%= team.contactName %> " required></input><br>
-    <label>Captain Name:</label>
-    <input type="Text" name="captainName" value="<%= team.captainName %> " required></input><br><br>
+<br /><br />
+<h2>Update <%= team.teamName %></h2>
+<form
+  id="add-team-form"
+  method="POST"
+  class="add-a-team-form"
+  action="/teams/<%= team._id %>?_method=PUT"
+>
+  <label>Team Name:</label>
+  <input
+    type="Text"
+    name="teamName"
+    value="<%= team.teamName %> "
+    required
+  /><br />
+  <label>Contact Name:</label>
+  <input
+    type="Text"
+    name="contactName"
+    value="<%= team.contactName %> "
+    required
+  /><br />
+  <label>Captain Name:</label>
+  <input
+    type="Text"
+    name="captainName"
+    value="<%= team.captainName %> "
+    required
+  /><br /><br />
 
-    <button type="submit" class="button-82-pushable" value="Update team">
-      <span class="button-82-shadow"></span>
-      <span class="button-82-edge"></span>
-      <span class="button-82-front text">
-        UPDATE TEAM
-      </span>
-    </button>
-  </form>
+  <button type="submit" class="button-82-pushable" value="Update team">
+    <span class="button-82-shadow"></span>
+    <span class="button-82-edge"></span>
+    <span class="button-82-front text"> UPDATE TEAM </span>
+  </button>
+</form>
 
-  <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

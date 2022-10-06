@@ -1,55 +1,54 @@
-<%- include('../partials/header') %>
-<%- include('../partials/userPlayers') %>
+<%- include('../partials/header') %> <%- include('../partials/userPlayers') %>
 <% let playersLeagues='' %>
 
 <h1>REGISTERED PLAYERS</h1>
 
 <table id="player-list">
-    <thead>
-        <tr>
-            <th>Name</a></th>
-            <th>Email</th>
-            <th>Average</th>
-            <th>Leagues</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!--  Sort players by name -->
-        <% players.sort((a,b)=> (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); reverse = true; %>
-            <!-- Loop through all the players -->
-            <% for(let i=0; i < players.length; i++) { %>
-                <!-- Loop through all the leagues the player is associated with -->
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Average</th>
+      <th>Leagues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--  Sort players by name -->
+    <% players.sort((a,b)=> (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 :
+    0)); reverse = true; %>
+    <!-- Loop through all the players -->
+    <% for(let i=0; i < players.length; i++) { %>
+    <!-- Loop through all the leagues the player is associated with -->
 
-                <tr class="row">
-                    <td><a href="/players/<%= players[i]._id %>">
-                            <%= players[i].name %>
-                        </a></td>
-                    <td>
-                        <%= players[i].email %>
-                    </td>
-                    <td class="center">
-                        <%= players[i].avg %>
-                    </td>
-                    <td>
-                        <% for(let n=0; n < players[i].leagues.length; n++) { %>
-                            <a href="/leagues/<%= players[i].leagues[n]._id %>">
-                                <%= players[i].leagues[n].leagueName %>
-                            </a><br>
-                            <% } %>
-                    </td>
-                    <!-- If User Logged in -->
-                    <% if (user) { %>
-                        <td>
-                            <form action="/players/<%= players[i]._id %>?_method=DELETE" method="POST">
-                                <button type="submit">X</button>
-                            </form>
-                        </td>
-                        <% } %>
-                            <!-- End of If User Logged In -->
-                            <% playersLeagues='' %>
-                </tr>
-            <% }; %>
-    </tbody>
+    <tr class="row">
+      <td>
+        <a href="/players/<%= players[i]._id %>"> <%= players[i].name %> </a>
+      </td>
+      <td><%= players[i].email %></td>
+      <td class="center"><%= players[i].avg %></td>
+      <td>
+        <% for(let n=0; n < players[i].leagues.length; n++) { %>
+        <a href="/leagues/<%= players[i].leagues[n]._id %>">
+          <%= players[i].leagues[n].leagueName %> </a
+        ><br />
+        <% } %>
+      </td>
+      <!-- If User Logged in -->
+      <% if (user) { %>
+      <td>
+        <form
+          action="/players/<%= players[i]._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
+      </td>
+      <% } %>
+      <!-- End of If User Logged In -->
+      <% playersLeagues='' %>
+    </tr>
+    <% }; %>
+  </tbody>
 </table>
-<br><br>
+<br /><br />
 <%- include('../partials/footer') %>

@@ -324,3 +324,11 @@ h2 {
 .large-header {
   font-size: 20pt;
 }
+
+@media only screen and (max-width: 600px) {
+  *{
+    zoom: .9;
+  }
+
+
+}

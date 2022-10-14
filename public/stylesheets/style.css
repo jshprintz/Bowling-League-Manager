@@ -330,5 +330,9 @@ h2 {
     zoom: .9;
   }
 
+  body > main {
+    margin: 75px 15px;
+    zoom: 1;
+  }
 
 }

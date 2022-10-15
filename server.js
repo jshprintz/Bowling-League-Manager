@@ -14,13 +14,14 @@ const leagueRoutes = require("./routes/leagues");
 const teamsRoutes = require("./routes/teams");
 const playersRoutes = require("./routes/players");
 
-// create the Express app
-const app = express();
-
 // connect to the MongoDB with mongoose
 require("./config/database");
 // configure Passport
 require("./config/passport");
+
+// create the Express app
+const app = express();
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -30,7 +31,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // mount the session middleware
 app.use(

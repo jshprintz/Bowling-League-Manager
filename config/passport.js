@@ -10,7 +10,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK,
     },
-    async function ( profile, cb) {
+    async function (accessToken, refreshToken, profile, cb) {
       // verify callback that gets invoked every single time someone logs in
       console.log(profile, " <- this is the profile from google");
 

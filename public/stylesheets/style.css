@@ -336,7 +336,8 @@ h2 {
   }
 
   .player-email {
-    max-width: 5%;
+    max-width: 250px;
+    overflow-wrap: break-word;
   }
 
 }

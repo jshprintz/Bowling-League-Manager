@@ -331,8 +331,12 @@ h2 {
   }
 
   body > main {
-    margin: 75px 5px;
+    margin: 75px 15px;
     zoom: 1;
+  }
+
+  .player-email {
+    max-width: 5%;
   }
 
 }

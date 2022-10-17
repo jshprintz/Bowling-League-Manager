@@ -24,7 +24,7 @@
       <td>
         <a href="/players/<%= players[i]._id %>"> <%= players[i].name %> </a>
       </td>
-      <td><%= players[i].email %></td>
+      <td class="player-email"><%= players[i].email %></td>
       <td class="center"><%= players[i].avg %></td>
       <td>
         <% for(let n=0; n < players[i].leagues.length; n++) { %>
